@@ -23,13 +23,14 @@ export const useAuthStore = defineStore('auth', ()=>{
     const connection = computed(()=> state.value.connection)
     const loading = computed(()=> state.value.loading)
     const message  = computed(()=> state.value.message)
+    const users = computed(()=> state.value.users)
     
     async function Login(user){
         state.value.loading = true
 
         try {
         const token = await AuthService.GetToken(user)
-
+        state.value.user = user
         state.value.access = token.access
         state.value.refresh = token.refresh
         } catch (error) {
@@ -58,7 +59,7 @@ export const useAuthStore = defineStore('auth', ()=>{
         state.value.loading = true
 
         try {
-        const user = await AuthService.GetToken(token)
+        const user = await AuthService.GetUser(token)
         state.value.user = user
         } catch (error) {
             state.value.error = error
@@ -142,5 +143,5 @@ export const useAuthStore = defineStore('auth', ()=>{
     }
    
 
-    return { error, user, state, access, refresh, connection, message, Login, Logout, GetUser, CreateUser, UpdateUser, DeleteUser, GetUsers, AutoLogin }
+    return { error, user, state, access, refresh, connection, message, users, loading, Login, Logout, GetUser, CreateUser, UpdateUser, DeleteUser, GetUsers, AutoLogin }
 })
