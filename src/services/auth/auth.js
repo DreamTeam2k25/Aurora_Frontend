@@ -3,7 +3,7 @@ import api from "@/plugins/api"
 class AuthService {
     async GetToken(user) {
         try {
-            const response = await api.get('token/', user)
+            const response = await api.post('token/', user)
             return response.data
         } catch (error) {
             return error;
@@ -30,7 +30,7 @@ class AuthService {
 
     async GetUser(token) {
         try {
-        const response = await api.get('users/me/', token)
+        const response = await api.get('users/me/', {headers: {'authorization': `Bearer ${token}`}})
         return response.data
     } catch (error) {
         return error;
