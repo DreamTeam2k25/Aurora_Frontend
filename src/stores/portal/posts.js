@@ -20,10 +20,10 @@ export const usePostStore = defineStore('posts', () => {
     const message = computed(() => state.message)
     const loading = computed(() => state.loading)
 
-    async function CreatePosts(token, post){
+    async function CreatePosts(post){
         state.loading = true
         try{
-            state.post = await PostsService.CreatePosts(token, post)
+            state.post = await PostsService.CreatePosts(post)
         }
         catch(error){
             state.error = error
@@ -34,10 +34,10 @@ export const usePostStore = defineStore('posts', () => {
         }
     }   
 
-    async function GetPosts(token) {
+    async function GetPosts() {
         state.loading = true
         try{
-            state.posts = await PostsService.GetPosts(token)
+            state.posts = await PostsService.GetPosts()
         }
         catch(error){
             state.error = error
@@ -48,10 +48,10 @@ export const usePostStore = defineStore('posts', () => {
         }
     }
 
-    async function GetPost(token, post){
+    async function GetPost(post){
         state.loading = true
         try{
-            state.post = await PostsService.GetPost(token, post)
+            state.post = await PostsService.GetPost(post)
         }
         catch(error){
             state.error = error
@@ -62,10 +62,10 @@ export const usePostStore = defineStore('posts', () => {
         }
     }
 
-    async function UpdatePosts(token, post) {
+    async function UpdatePosts(post) {
         state.loading = true
         try{
-            const PostUpdated = await PostsService.UpdatePosts(token, post)
+            const PostUpdated = await PostsService.UpdatePosts(post)
             const findPostIndex = state.posts.findIndex(p => p.id === post.id)
             state.posts[findPostIndex] = PostUpdated
         }
@@ -78,12 +78,12 @@ export const usePostStore = defineStore('posts', () => {
         }
     }
 
-    async function DeletePosts(token, post){
+    async function DeletePosts(post){
         state.loading = true
         try{
             const findPostIndex = state.posts.findIndex(p => p.id === post.id)
             state.posts.splice(findPostIndex, 1)
-            await PostsService.DeletePosts(token, post)
+            await PostsService.DeletePosts(post)
         }
         catch(error){
             state.error = error

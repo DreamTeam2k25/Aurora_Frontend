@@ -18,10 +18,10 @@ export const useImageStore = defineStore('image', () => {
     const error = computed(() => state.error)
     const connection = computed(() => state.connection)
 
-    async function ImageUpdate(token, image){
+    async function ImageUpdate(image){
         state.loading = true
         try{
-            state.image = await ImageService.CreateImage(token, image)
+            state.image = await ImageService.CreateImage(image)
         }
         catch(error){
             state.error = error

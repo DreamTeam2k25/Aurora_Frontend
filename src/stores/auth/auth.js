@@ -113,7 +113,7 @@ export const useAuthStore = defineStore('auth', ()=>{
         
         const index = state.value.users.findIndex((s) => s.id == user.id)
 
-        state.value.users[index] = await AuthService.UpdateUser(user, index)
+        state.value.users[index] = await AuthService.UpdateUser(user)
         } catch (error) {
             state.value.error = error
             state.value.message = "Erro ao editar usuário"

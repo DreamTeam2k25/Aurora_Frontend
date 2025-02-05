@@ -1,11 +1,9 @@
 import api from "@/plugins/api";
 
 class ImageService{
-    async CreateImage(token, image){
+    async CreateImage(image){
         try{
-            const response = await api.post('images/', image, {headers: {
-                Authorization: `Bearer ${token}` 
-            }})
+            const response = await api.post('images/', image)
 
             return response.data
         }
