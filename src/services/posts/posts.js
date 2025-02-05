@@ -13,6 +13,18 @@ class PostsService{
             return error
         }
     }
+    async GetPost(token, post){
+        try{
+            const response = await api.get(`posts/${post.id}`, {headers: {
+                Authorization: `Bearer ${token}`
+            }})
+
+            return response.data
+        }
+        catch(error){
+            return error
+        }
+    }
     async CreatePosts(token, post){
         try{
             const response = await api.post('posts/', post, {headers: {
