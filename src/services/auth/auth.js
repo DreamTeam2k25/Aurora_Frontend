@@ -42,6 +42,7 @@ class AuthService {
         const response = await api.put(`users/${user.id}/`, user)
         return response.data
     } catch (error) {
+        console.log(error)
         return error;
     }
     }

@@ -96,7 +96,7 @@ export const useAuthStore = defineStore('auth', ()=>{
        const user = state.value.users.findIndex((s) => s.id == id)
 
        state.value.users.splice(user, 1)
-       await AuthService.DeleteUser(user)
+       await AuthService.DeleteUser(id)
         } catch (error) {
             state.value.error = error
             state.value.message = "Erro ao deletar usuário"

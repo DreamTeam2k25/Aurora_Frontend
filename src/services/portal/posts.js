@@ -52,7 +52,7 @@ class PostsService{
 
     //////////
 
-    async GetPostsImage(){
+    async GetPostsImages(){
         try{
             const response = await api.get('post-images/')
 
@@ -64,15 +64,17 @@ class PostsService{
     }
     async GetPostImage(postImage){
         try{
-            const response = await api.get(`post-images/${postImage.id}`)
+            const response = await api.get(`post-images/${postImage.id}/`)
 
             return response.data
         }
         catch(error){
+            console.log(error)
+
             return error
         }
     }
-    async CreatePosts(postImage){
+    async CreatePostsImages(postImage){
         try{
             const response = await api.post('post-images/', postImage)
             return response.data
@@ -81,7 +83,7 @@ class PostsService{
             return error
         }
     }
-    async UpdatePosts(postImage){
+    async UpdatePostsImages(postImage){
         try{
             const response = await api.patch(`post-images/${postImage.id}`, postImage)
             return response.data
@@ -90,9 +92,9 @@ class PostsService{
             return error
         }
     }
-    async DeletePosts(post){
+    async DeletePostsImages(postImage){
         try{
-            const response = await api.delete(`posts/${post.id}`)
+            const response = await api.delete(`post-images/${postImage.id}`)
             
             return response.data
         }
