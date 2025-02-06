@@ -37,11 +37,12 @@ class AuthService {
     }
     }
 
-    async UpdateUser(user, id) {
+    async UpdateUser(user) {
         try {
-        const response = await api.put(`users/${id}/`, user)
+        const response = await api.put(`users/${user.id}/`, user)
         return response.data
     } catch (error) {
+        console.log(error)
         return error;
     }
     }

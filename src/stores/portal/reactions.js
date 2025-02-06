@@ -55,7 +55,7 @@ export const useReactionsStore = defineStore('reactions', () => {
             
             const index = state.reactions.findIndex((s) => s.id == reaction.id)
     
-            state.reactions[index] = await ReactionsService.UpdateReactions(reaction, index)
+            state.reactions[index] = await ReactionsService.UpdateReactions(reaction)
             } catch (error) {
                 state.value.error = error
                 state.value.message = "Erro ao editar Reação"

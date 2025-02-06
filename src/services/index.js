@@ -1,5 +1,5 @@
 import AuthService from "./auth/auth";
-import PostsService from './posts/posts';
+import PostsService from './portal/posts';
 import ReactionsService from './portal/reactions';
 import ImageService from './image/image'
 

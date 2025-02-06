@@ -12,7 +12,7 @@ class ReactionsService{
         }
     }
    
-    async CreateReactions(token, reaction){
+    async CreateReactions(reaction){
         try{
             const response = await api.post('reactions/', reaction)
             return response.data
@@ -21,9 +21,9 @@ class ReactionsService{
             return error
         }
     }
-    async UpdateReactions(reaction, id){
+    async UpdateReactions(reaction){
         try{
-            const response = await api.put(`reactions/${id}`, reaction)
+            const response = await api.put(`reactions/${reaction.id}`, reaction)
             return response.data
         }   
         catch(error){
