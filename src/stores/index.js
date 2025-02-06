@@ -3,6 +3,7 @@ import { usePostStore } from "./portal/posts";
 import { useReactionsStore } from "./portal/reactions";
 import { useImageStore } from "./image/image";
 import { useStudentsStore } from "./students/student";
+import { useGuildMembersStore } from "./students/guildMembers";
 
 export {
     useAuthStore,
@@ -10,4 +11,5 @@ export {
     useReactionsStore,
     useImageStore,
     useStudentsStore,
+    useGuildMembersStore,
 }
