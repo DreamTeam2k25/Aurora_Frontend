@@ -1,9 +1,10 @@
 import api from "@/plugins/api";
 
-class PostsService{
-    async GetPosts(){
+class RepliesService{
+
+    async GetReplies(){
         try{
-            const response = await api.get('posts/')
+            const response = await api.get('replies/')
 
             return response.data
         }
@@ -11,9 +12,9 @@ class PostsService{
             return error
         }
     }
-    async GetPost(post){
+    async GetReplie(replie){
         try{
-            const response = await api.get(`posts/${post.id}`)
+            const response = await api.get(`replies/${replie.id}`)
 
             return response.data
         }
@@ -21,27 +22,27 @@ class PostsService{
             return error
         }
     }
-    async CreatePosts(post){
+    async CreateReplies(replie){
         try{
-            const response = await api.post('posts/', post)
+            const response = await api.post('replies/', replie)
             return response.data
         }
         catch(error){
             return error
         }
     }
-    async UpdatePosts(post){
+    async UpdateReplies(replie){
         try{
-            const response = await api.patch(`posts/${post.id}`, post)
+            const response = await api.patch(`replies/${replie.id}`, replie)
             return response.data
         }   
         catch(error){
             return error
         }
     }
-    async DeletePosts(post){
+    async DeleteReplies(replie){
         try{
-            const response = await api.delete(`posts/${post.id}`)
+            const response = await api.delete(`replies/${replie.id}`)
             
             return response.data
         }
@@ -49,60 +50,8 @@ class PostsService{
             return error
         }
     }
-
-    //////////
-
-    async GetPostsImages(){
-        try{
-            const response = await api.get('post-images/')
-
-            return response.data
-        }
-        catch(error){
-            return error
-        }
-    }
-    async GetPostImage(postImage){
-        try{
-            const response = await api.get(`post-images/${postImage.id}/`)
-
-            return response.data
-        }
-        catch(error){
-            console.log(error)
-
-            return error
-        }
-    }
-    async CreatePostsImages(postImage){
-        try{
-            const response = await api.post('post-images/', postImage)
-            return response.data
-        }
-        catch(error){
-            return error
-        }
-    }
-    async UpdatePostsImages(postImage){
-        try{
-            const response = await api.patch(`post-images/${postImage.id}`, postImage)
-            return response.data
-        }   
-        catch(error){
-            return error
-        }
-    }
-    async DeletePostsImages(postImage){
-        try{
-            const response = await api.delete(`post-images/${postImage.id}`)
-            
-            return response.data
-        }
-        catch(error){
-            return error
-        }
-    }
+ 
     
 }
 
-export default new PostsService()
+export default new RepliesService()
