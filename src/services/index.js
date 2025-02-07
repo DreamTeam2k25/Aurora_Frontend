@@ -4,6 +4,9 @@ import ReactionsService from './portal/reactions';
 import ImageService from './image/image'
 import StudentsService from './students/student';
 import GuildMembersService from './students/guildMember';
+import CommentsService from './portal/comments';
+import RepliesService from './portal/replies';
+
 export {
     AuthService,
     PostsService,
@@ -11,4 +14,6 @@ export {
     ImageService,
     StudentsService,
     GuildMembersService,
+    CommentsService,
+    RepliesService
 }
