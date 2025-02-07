@@ -3,6 +3,8 @@ import { usePostStore } from "./portal/posts";
 import { useReactionsStore } from "./portal/reactions";
 import { useImageStore } from "./image/image";
 import { useStudentsStore } from "./students/student";
+import { useCommentsStore } from "./portal/comments";
+import { useRepliesStore } from "./portal/replies";
 
 export {
     useAuthStore,
@@ -10,4 +12,6 @@ export {
     useReactionsStore,
     useImageStore,
     useStudentsStore,
+    useCommentsStore,
+    useRepliesStore,
 }
