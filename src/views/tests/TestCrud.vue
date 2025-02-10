@@ -1,11 +1,15 @@
 <script setup>
 import  { onMounted, reactive, ref } from 'vue'
-import { useAuthStore, useImageStore, usePostStore } from "@/stores/index";
+import { useAuthStore, useImageStore, usePostStore, useRepliesOfRepliesStore, useCommentsStore } from "@/stores/index";
 const postStore = usePostStore()
+const repliesOfRepliesStore = useRepliesOfRepliesStore()
+const commentsStore = useCommentsStore()
 
 onMounted(async()=> {
   await postStore.GetPosts()
   await postStore.GetPostImage(postStore.posts[0])
+  await repliesOfRepliesStore.GetRepliesOfReplies()
+  await commentsStore.GetComments()
   console.log(postStore.post_image)
 })
 const authStore = useAuthStore()
@@ -33,7 +37,23 @@ const imageStore = useImageStore()
 
 //   await imageStore.CreateImage(saveimg.value)
 // }
+const rep = reactive({
+  user: '',
+  comment_replie: '',
+})
 
+const fillCommentInfo = (comment) => {
+  rep.comment_replie = comment.id
+}
+
+const fillInfo = (info) => {
+  rep.user = info.id
+}
+
+const createReplieOfReplie = async (replier) => {
+  console.log(replier)
+  await repliesOfRepliesStore.CreateRepliesOfReplies(replier)
+}
 
 </script>
 <template>
@@ -43,28 +63,26 @@ const imageStore = useImageStore()
         <li @click="fillInfo(user)" v-for="user in authStore.users">{{ user.name }}</li>
       </ul>
 
-      <h1 class=" text-amber-800">Images</h1>
+      <h1 class=" text-amber-800">Replies of Replies</h1>
       <ul>
-        <li @click="fillInfo(image)" v-for="image in imageStore.images">{{ typeof image }}</li>
+        <li v-for="replyOfReplye in repliesOfRepliesStore.repliesOfReplies">{{ replyOfReplye.comment_replie.reply }}</li>
       </ul>
 
-      <h1 class=" text-amber-800">Posts</h1>
+      <h1 class=" text-amber-800">Comment</h1>
       <ul>
-        <li @click="fillInfo(post)" v-for="post in postStore.posts">
-          <img src="" alt="">
+        <li @click="fillCommentInfo(comment)" v-for="comment in commentsStore.comments">
+          <p>{{ comment.comment }}</p>
         </li>
       </ul>
       
       <h1>LOGIN</h1>
       
-      <!-- <input v-model="user.username" type="text" placeholder="username">
-      <input v-model="user.name" type="text" placeholder="name">
-      <input v-model="user.email" type="text" placeholder="email">
-      <input v-model="user.password" type="text" placeholder="password">
-      <button @click="login(user)" class=" border-2 px-3 py-2 ">LOGIN</button>
-      <button @click="erase(user)" class=" border-2 px-3 py-2 ">EXCLUIR</button> -->
-      <input type="file" placeholder="SELECIONE" @change="handleFileUpload" >
-      <button @click="createImage()" class=" border-2 px-3 py-2 ">Upload</button>
+      <input v-model="rep.comment_replie" type="text" placeholder="comment reply">
+            
+      <input v-model="rep.user" type="text" placeholder="user">
+
+      <!-- <input type="file" placeholder="SELECIONE" @change="handleFileUpload" > -->
+      <button @click="createReplieOfReplie(rep)" class=" border-2 px-3 py-2 ">CREATE REPLYOFREPLY</button>
       <p>{{ saveimg }}</p>
     </main>
   </template>
