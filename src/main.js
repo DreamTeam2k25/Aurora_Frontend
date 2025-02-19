@@ -2,6 +2,8 @@ import './assets/main.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import 'css-doodle'
+
 
 import App from './App.vue'
 import router from './router'

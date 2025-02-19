@@ -84,6 +84,20 @@ const createReplieOfReplie = async (replier) => {
       <!-- <input type="file" placeholder="SELECIONE" @change="handleFileUpload" > -->
       <button @click="createReplieOfReplie(rep)" class=" border-2 px-3 py-2 ">CREATE REPLYOFREPLY</button>
       <p>{{ saveimg }}</p>
+
+    <css-doodle use="var(--rule)"></css-doodle>
     </main>
   </template>
+
+<style scoped>
+css-doodle {
+  --rule: (
+    :doodle {
+    @grid: 5 / 8em;
+  }
+  background: #60569e;
+  transform: scale(@rand(.2, .9));
+  );
+}
+</style>
   
