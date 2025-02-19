@@ -1,7 +1,0 @@
-
-
-<template>
-  <main>
-    
-  </main>
-</template>
