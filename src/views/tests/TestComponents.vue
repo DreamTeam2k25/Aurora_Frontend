@@ -1,5 +1,5 @@
 <script setup>
-import GlobalButton from '@/components/GlobalButton.vue';
+import GlobalButton from '@/components/global/buttons/GlobalButton.vue';
 
 function envieCoisa() {
     console.log('coisa')

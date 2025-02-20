@@ -1,4 +1,4 @@
-import GlobalButton from "./GlobalButton.vue";
+import GlobalButton from "./global/buttons/GlobalButton.vue";
 
 export {
     GlobalButton,

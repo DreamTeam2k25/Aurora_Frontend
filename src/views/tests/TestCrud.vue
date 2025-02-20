@@ -1,7 +1,7 @@
 <script setup>
 import  { onMounted, reactive, ref } from 'vue'
 import { useAuthStore, useImageStore, usePostStore, useRepliesOfRepliesStore, useCommentsStore } from "@/stores/index";
-import GlobalButton from '@/components/GlobalButton.vue';
+import GlobalButton from '@/components/global/buttons/GlobalButton.vue';
 
 const postStore = usePostStore()
 const repliesOfRepliesStore = useRepliesOfRepliesStore()
