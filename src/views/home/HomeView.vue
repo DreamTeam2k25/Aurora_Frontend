@@ -1,3 +1,3 @@
 <template>
-    <h1>Hello World! :D</h1>
+    <h1>Anthony viado</h1>
 </template>
