@@ -3,11 +3,13 @@ import PostCard from "./global/cards/PostCard.vue";
 import PostContainerCard from "./global/cards/PostContainerCard.vue";
 import PostForm from "./tests/PostForm.vue";
 import GlobalText from "./global/titles/GlobalText.vue";
+import Header from "./layout/header/Header.vue";
 
 export {
     GlobalButton,
     PostCard,
     PostContainerCard,
     PostForm,
-    GlobalText
+    GlobalText,
+    Header
 }
