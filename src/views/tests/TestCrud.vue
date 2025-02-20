@@ -1,6 +1,8 @@
 <script setup>
 import  { onMounted, reactive, ref } from 'vue'
 import { useAuthStore, useImageStore, usePostStore, useRepliesOfRepliesStore, useCommentsStore } from "@/stores/index";
+import GlobalButton from '@/components/global/buttons/GlobalButton.vue';
+
 const postStore = usePostStore()
 const repliesOfRepliesStore = useRepliesOfRepliesStore()
 const commentsStore = useCommentsStore()
@@ -86,6 +88,8 @@ const createReplieOfReplie = async (replier) => {
       <p>{{ saveimg }}</p>
 
     <css-doodle use="var(--rule)"></css-doodle>
+
+    <GlobalButton />
     </main>
   </template>
 
