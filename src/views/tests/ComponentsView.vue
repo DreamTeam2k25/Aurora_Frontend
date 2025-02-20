@@ -1,6 +1,5 @@
 <script setup>
-import PostContainerCard from '@/components/global/PostContainerCard.vue';
-import PostForm from '@/components/tests/PostForm.vue';
+import { PostContainerCard, PostForm } from '@/components';
 </script>
 
 <template>
