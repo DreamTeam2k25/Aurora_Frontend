@@ -2,6 +2,7 @@
 import GlobalButton from '@/components/global/buttons/GlobalButton.vue';
 import GlobalText from '@/components/global/titles/GlobalText.vue';
 import Header from '@/components/layout/header/Header.vue';
+import Footer from '@/components/layout/footer/Footer.vue';
 function envieCoisa() {
     console.log('coisa')
 }
@@ -21,4 +22,5 @@ function envieCoisa() {
         <GlobalText text="Mudanças de horários, olimpiadas estudantis, segunda chamada, sábados letivos entre outros. É calouro? Veja os primeiros passos:" width="w-2/5" spacing="leading-7" size="text-xl" weight="font-bold" text_align="text-justify"/>
     </div>
     <Header />
+    <Footer />
 </template>
