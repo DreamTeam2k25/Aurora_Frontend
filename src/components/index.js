@@ -14,6 +14,6 @@ export {
     PostForm,
     GlobalText,
     Header,
-    ContainerShowCards
+    ContainerShowCards,
     Footer
 }
