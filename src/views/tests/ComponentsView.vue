@@ -1,5 +1,5 @@
 <script setup>
-import { PostContainerCard, PostForm } from '@/components';
+import { PostContainerCard, PostForm, ContainerShowCards } from '@/components';
 </script>
 
 <template>
@@ -8,4 +8,5 @@ import { PostContainerCard, PostForm } from '@/components';
 </div> -->
 <PostContainerCard  />
 <PostForm />
+<ContainerShowCards />
 </template>

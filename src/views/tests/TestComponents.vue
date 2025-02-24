@@ -3,6 +3,7 @@ import { MiniGuildMembers } from '@/components';
 import GlobalButton from '@/components/global/buttons/GlobalButton.vue';
 import GlobalText from '@/components/global/titles/GlobalText.vue';
 import Header from '@/components/layout/header/Header.vue';
+import Footer from '@/components/layout/footer/Footer.vue';
 function envieCoisa() {
     console.log('coisa')
 }
@@ -25,4 +26,5 @@ function envieCoisa() {
     <div class="p-5 flex flex-col gap-10">
         <MiniGuildMembers current-guild="exemplo" />
     </div>
+    <Footer />
 </template>

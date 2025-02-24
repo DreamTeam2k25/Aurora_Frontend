@@ -5,6 +5,8 @@ import PostForm from "./tests/PostForm.vue";
 import GlobalText from "./global/titles/GlobalText.vue";
 import Header from "./layout/header/Header.vue";
 import MiniGuildMembers from "./aurora/home/guild/MiniGuildMembers.vue"
+import ContainerShowCards from "./global/cards/ContainerShowCards.vue";
+import Footer from "./layout/footer/Footer.vue";
 
 export {
     GlobalButton,
@@ -14,4 +16,6 @@ export {
     GlobalText,
     Header,
     MiniGuildMembers
+    ContainerShowCards
+    Footer
 }
