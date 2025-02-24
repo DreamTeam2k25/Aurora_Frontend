@@ -1,5 +1,7 @@
-import { links } from "./links/links";
+import { links, linksIFC, linksContact } from "./links/links";
 
 export {
-    links
+    links,
+    linksIFC,
+    linksContact
 }
