@@ -7,6 +7,7 @@ import Header from "./layout/header/Header.vue";
 import MiniGuildMembers from "./aurora/home/guild/MiniGuildMembers.vue"
 import ContainerShowCards from "./global/cards/ContainerShowCards.vue";
 import Footer from "./layout/footer/Footer.vue";
+import AuthMarketingText from "./auth/AuthMarketingText.vue";
 
 export {
     GlobalButton,
@@ -15,7 +16,8 @@ export {
     PostForm,
     GlobalText,
     Header,
-    MiniGuildMembers
-    ContainerShowCards
-    Footer
+    MiniGuildMembers,
+    ContainerShowCards,
+    Footer,
+    AuthMarketingText,
 }

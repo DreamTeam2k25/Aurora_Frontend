@@ -2,6 +2,7 @@
 import  { onMounted, reactive, ref } from 'vue'
 import { useAuthStore, useImageStore, usePostStore, useRepliesOfRepliesStore, useCommentsStore } from "@/stores/index";
 import GlobalButton from '@/components/global/buttons/GlobalButton.vue';
+import AuthMarketingText from '@/components/auth/AuthMarketingText.vue';
 
 const postStore = usePostStore()
 const repliesOfRepliesStore = useRepliesOfRepliesStore()
@@ -90,6 +91,8 @@ const createReplieOfReplie = async (replier) => {
     <css-doodle use="var(--rule)"></css-doodle>
 
     <GlobalButton />
+
+    <AuthMarketingText />
     </main>
   </template>
 

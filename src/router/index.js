@@ -15,7 +15,7 @@ const router = createRouter({
     },
     {
       path: '/firststep',
-      name: 'Primeiros passos',
+      name: 'Primeiros-passos',
       component: ()=> import('@/views/tests/TestHeader.vue'),
     },
     {
