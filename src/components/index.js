@@ -8,6 +8,7 @@ import MiniGuildMembers from "./aurora/home/guild/MiniGuildMembers.vue"
 import ContainerShowCards from "./global/cards/ContainerShowCards.vue";
 import Footer from "./layout/footer/Footer.vue";
 import AuthMarketingText from "./auth/AuthMarketingText.vue";
+import AuthInput from "./auth/AuthInput.vue";
 
 export {
     GlobalButton,
@@ -20,4 +21,5 @@ export {
     ContainerShowCards,
     Footer,
     AuthMarketingText,
+    AuthInput,
 }
