@@ -10,7 +10,7 @@ const getImageUrl = (imgName) => {
 
 </script>
 <template>
-    <footer class="bg-[#347EBF] flex  justify-between items-center text-white p-10">
+    <footer class="bg-[#347EBF] flex  justify-between items-center text-white p-10 mt-10">
             <div class="w-6/12 flex justify-center flex-col gap-10 p-5 ">
                 <img src="../../../assets/images/Aurora footer.png" width="110" alt="">
                 <GlobalText text="Bons estudos! agredecemos a visita" size="text-[28px]" spacing="leading-12" width="w-2/5" weight="font-semibold"/>

@@ -11,6 +11,8 @@ import AuthMarketingText from "./auth/AuthMarketingText.vue";
 import AuthInput from "./auth/AuthInput.vue";
 import ActualGuild from "./aurora/home/guild/ActualGuild.vue";
 import SearchNews from "./aurora/news/search/SearchNews.vue";
+import MainSection from "./aurora/home/main/MainSection.vue";
+import InformationComp from "./aurora/home/information/InformationComp.vue";
 import WideNews from "./global/cards/WideNews.vue";
 
 export {
@@ -27,5 +29,7 @@ export {
     AuthInput,
     ActualGuild,
     SearchNews,
+    MainSection,
+    InformationComp
     WideNews
 }

@@ -35,11 +35,9 @@ const props = defineProps({
                 {{ props.post.title }}
             </h3>
 
-
             <p class="text-gray-600 text-sm line-clamp-2">
                 {{ props.post.description }}
             </p>
-
 
             <div class="text-sm text-gray-500">
                 Publicado em: {{ props.post.publishedAt }}
