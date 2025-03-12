@@ -3,7 +3,7 @@ import { GlobalText, MiniGuildMembers, GlobalButton } from '@/components';
 import { textGuild } from '@/utils';
 </script>
 <template>
-    <div class="flex  justify-around">
+    <div class="flex  justify-around mt-30">
         <div>
             <div class="relative flex flex-col items-end justify-end">
                 <div class="border-20 mb-14 rounded-full border-[#82B0D9] w-96">

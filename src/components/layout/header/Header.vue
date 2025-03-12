@@ -13,7 +13,7 @@ const route = useRoute()
         </div>
         <div class="flex justify-center border rounded-3xl w-60 border-[#C3C3C3] items-center mr-10">
             <p class="w-3/4 text-center font-bold cursor-pointer">Cadastro</p>
-            <GlobalButton content="login" width="w-3/4"/>
+            <GlobalButton content="Login" width="w-3/4"/>
         </div>
     </header>
 </template>
