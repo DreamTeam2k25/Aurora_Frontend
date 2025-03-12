@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, ref } from 'vue';
-import ChevronRight from 'vue-material-design-icons/ChevronRight.vue'
+import ChevronRight from 'vue-material-design-icons/ChevronRight.vue';
+import ChevronDown from 'vue-material-design-icons/ChevronDown.vue'
 
 const props = defineProps({
     'color': {
@@ -34,6 +35,10 @@ const props = defineProps({
     'block': {
         type: Boolean,
         default: false
+    },
+    'search': {
+        type: Boolean,
+        default: false
     }
 })
 
@@ -50,5 +55,6 @@ onMounted(() => {
         @click="$emit('evento')">
         <p>{{ props.content }}</p>
         <ChevronRight v-if="props.icon" class="ml-1.5" />
+        <ChevronDown v-if="props.search" class="ml-1.5"/>
     </button>
 </template>
