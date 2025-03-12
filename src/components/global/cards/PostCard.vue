@@ -31,7 +31,7 @@ const props = defineProps({
             </div>
         </div>
         <div :class="'p-4 space-y-3'" v-if="!props.isfully">
-            <h3 :style="{ fontWeight: 700 || 'normal' }" :class="!props.isfully ? 'text-xl text-gray-900 line-clamp-2' : 'text-xl text-white line-clamp-2'">
+            <h3 :style="{ fontWeight: 700 || 'normal' }" :class="'text-xl text-gray-900 line-clamp-2'">
                 {{ props.post.title }}
             </h3>
 
