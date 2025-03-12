@@ -9,7 +9,7 @@ import MainSection from '@/components/aurora/home/main/MainSection.vue';
     <PostCard v-for="(post, index) in posts" :key="index" :post="post" />
 </div>
 <!-- <MainSection /> -->
-<!-- <PostContainerCard  /> -->
+<PostContainerCard  />
 <AuthMarketingText />
 <!-- <PostForm /> -->
 <ContainerShowCards />
