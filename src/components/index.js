@@ -9,6 +9,7 @@ import ContainerShowCards from "./global/cards/ContainerShowCards.vue";
 import Footer from "./layout/footer/Footer.vue";
 import AuthMarketingText from "./auth/AuthMarketingText.vue";
 import AuthInput from "./auth/AuthInput.vue";
+import ActualGuild from "./aurora/home/guild/ActualGuild.vue";
 
 export {
     GlobalButton,
@@ -22,4 +23,5 @@ export {
     Footer,
     AuthMarketingText,
     AuthInput,
+    ActualGuild
 }
