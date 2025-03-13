@@ -16,6 +16,7 @@ import InformationComp from "./aurora/home/information/InformationComp.vue";
 import WideNews from "./global/cards/WideNews.vue";
 import ChatComment from "./aurora/news/coments/ChatComment.vue";
 import CommentsSection from "./aurora/news/coments/CommentsSection.vue";
+import CoverNews from "./aurora/news/info/CoverNews.vue";
 
 export {
     GlobalButton,
@@ -35,5 +36,6 @@ export {
     InformationComp,
     WideNews,
     ChatComment,
-    CommentsSection
+    CommentsSection,
+    CoverNews
 }
