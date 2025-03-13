@@ -14,6 +14,7 @@ import SearchNews from "./aurora/news/search/SearchNews.vue";
 import MainSection from "./aurora/home/main/MainSection.vue";
 import InformationComp from "./aurora/home/information/InformationComp.vue";
 import WideNews from "./global/cards/WideNews.vue";
+import ChatComment from "./aurora/news/coments/ChatComment.vue";
 
 export {
     GlobalButton,
@@ -31,5 +32,6 @@ export {
     SearchNews,
     MainSection,
     InformationComp,
-    WideNews
+    WideNews,
+    ChatComment
 }
