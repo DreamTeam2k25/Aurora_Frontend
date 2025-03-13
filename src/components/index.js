@@ -30,6 +30,6 @@ export {
     ActualGuild,
     SearchNews,
     MainSection,
-    InformationComp
+    InformationComp,
     WideNews
 }
