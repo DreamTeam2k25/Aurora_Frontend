@@ -1,24 +1,9 @@
-// HeroWelcome.vue
+<script setup>
+    import { GlobalText } from '@/components';
+</script>
 <template>
-    <div class="w-full md:w-1/2">
-        <h1 class="text-5xl md:text-6xl lg:text-8xl font-bold text-gray-900 leading-tight mb-8 gradientBlue">
-            Sejam Bem Vindos<br />
-            ao IFC Campus<br />
-            Araquari
-        </h1>
-        <p class="text-sm md:text-base text-black mb-8 max-w-2xl">
-            Is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-            has been the industry's standard dummy text ever since the 1500s, when an
-            unknown printer
-        </p>
+    <div class="w-full md:w-1/2 flex flex-col gap-5">
+        <GlobalText :has_gradient="true" text="Sejam Bem Vindos ao Campus IFC Araquari" width="w-full" size="text-7xl"/>
+        <GlobalText :has_gradient="false" text="Is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when anunknown printer" size="text-lg" spacing="leading-7" width="w-3/4" weight="font-normal" text_align="text-justify"/>
     </div>
 </template>
-
-<style scoped>
-.gradientBlue {
-    background: linear-gradient(90deg, #000000 0%, #347EBF 97.5%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-</style>

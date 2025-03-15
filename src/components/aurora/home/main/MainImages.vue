@@ -7,7 +7,7 @@
       />
     </div>
   
-    <div class="absolute -top-12 -left-6 md:left-130 w-58 h-58 rounded-full overflow-hidden bg-blue-500 shadow-lg border-4 border-white">
+    <div class="absolute -top-12 -left-6 md:left-120 w-58 h-58 rounded-full overflow-hidden bg-blue-500 shadow-lg border-4 border-white">
       <img 
       
         src="@/assets/images/dummy-foto-woman1.png"
