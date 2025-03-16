@@ -15,6 +15,7 @@ import MainSection from "./aurora/home/main/MainSection.vue";
 import InformationComp from "./aurora/home/information/InformationComp.vue";
 import WideNews from "./global/cards/WideNews.vue";
 import ChatComment from "./aurora/news/coments/ChatComment.vue";
+import userData_header from "./layout/userData_header/userData_header.vue";
 
 export {
     GlobalButton,
@@ -33,5 +34,6 @@ export {
     MainSection,
     InformationComp,
     WideNews,
-    ChatComment
+    ChatComment,
+    userData_header
 }

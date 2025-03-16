@@ -12,6 +12,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@mdi/font": "^7.4.47",
     "@tailwindcss/vite": "^4.0.3",
     "@vueuse/core": "^12.5.0",
     "axios": "^1.7.9",
@@ -39,6 +40,9 @@
     "vitest": "^3.0.2"
   },
   "tailwind": {
-    "content": ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"]
+    "content": [
+      "./index.html",
+      "./src/**/*.{vue,js,ts,jsx,tsx}"
+    ]
   }
 }
