@@ -1,7 +1,11 @@
 <script setup>
-  import Header from './components/layout/header/Header.vue';
+import { useRoute } from 'vue-router';
+import Header from './components/layout/header/Header.vue';
+import { onMounted } from 'vue';
+const route = useRoute()
+
 </script>
 <template>
-  <Header /> 
+  <Header v-if="route.meta.header" /> 
   <RouterView />
 </template>
