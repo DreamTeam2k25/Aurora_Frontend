@@ -19,7 +19,7 @@ const router = createRouter({
       path: '/firststep',
       name: 'Primeiros-passos',
       meta: {header: true},
-      component: ()=> import('@/views/tests/TestHeader.vue'),
+      component: ()=> import('@/views/tests/FirstSteps.vue'),
     },
     {
       path: "/components",
@@ -32,6 +32,11 @@ const router = createRouter({
       name: "auth",
       meta: {header: false},
       component: ()=> import('@/views/auth/AuthView.vue')
+    },
+    {
+      path: '/luan',
+      name: 'luan',
+      component: () => import('@/views/tests/LuanView.vue')
     }
   ],
 })

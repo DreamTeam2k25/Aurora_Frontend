@@ -1,3 +1,11 @@
+<script setup>
+import { MainSection, PostContainerCard, InformationComp, ActualGuild, Footer } from '@/components';
+</script>
+
 <template>
-    <h1>Anthony viado</h1>
+    <MainSection />
+    <PostContainerCard />
+    <InformationComp />
+    <ActualGuild />
+    <Footer />
 </template>

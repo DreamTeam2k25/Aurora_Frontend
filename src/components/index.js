@@ -9,6 +9,15 @@ import ContainerShowCards from "./global/cards/ContainerShowCards.vue";
 import Footer from "./layout/footer/Footer.vue";
 import AuthMarketingText from "./auth/AuthMarketingText.vue";
 import AuthInput from "./auth/AuthInput.vue";
+import ActualGuild from "./aurora/home/guild/ActualGuild.vue";
+import SearchNews from "./aurora/news/search/SearchNews.vue";
+import MainSection from "./aurora/home/main/MainSection.vue";
+import InformationComp from "./aurora/home/information/InformationComp.vue";
+import WideNews from "./global/cards/WideNews.vue";
+import FirstStepsCards from "./aurora/first_steps/FirstStepsCards.vue";
+import ChatComment from "./aurora/news/coments/ChatComment.vue";
+import CommentsSection from "./aurora/news/coments/CommentsSection.vue";
+import CoverNews from "./aurora/news/info/CoverNews.vue";
 
 export {
     GlobalButton,
@@ -22,4 +31,13 @@ export {
     Footer,
     AuthMarketingText,
     AuthInput,
+    ActualGuild,
+    SearchNews,
+    MainSection,
+    InformationComp,
+    WideNews,
+    FirstStepsCards
+    ChatComment,
+    CommentsSection,
+    CoverNews,
 }
