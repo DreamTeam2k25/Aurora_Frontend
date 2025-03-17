@@ -1,8 +1,9 @@
 <script setup>
-    import { CommentsSection, CoverNews } from '@/components';
+    import { CommentsSection, CoverNews, CommentsDesc } from '@/components';
 </script>
 <template>
     <h1>testes do manquinho</h1>
-    <CommentsSection/>
+    <CommentsSection />
     <CoverNews/>
+    <CommentsDesc />
 </template>
