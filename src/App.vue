@@ -13,8 +13,9 @@ const route = useRoute()
 </script>
 <template>
   <main >
+    <userData_header class="z-[9999]" />
   <Header v-if="route.meta.header" /> 
-  <userData_header class="z-[9999]" />
+
   <DevNav />
   <button class="absolute top-0 left-0 z-[9999]" @click="studentsStore.state.open = !studentsStore.state.open">OPEN</button>
   <RouterView />

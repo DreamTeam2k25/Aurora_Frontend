@@ -19,6 +19,7 @@ import ChatComment from "./aurora/news/coments/ChatComment.vue";
 import userData_header from "./layout/userData_header/userData_header.vue";
 import CommentsSection from "./aurora/news/coments/CommentsSection.vue";
 import CoverNews from "./aurora/news/info/CoverNews.vue";
+import ExpandedGuildMembers from "./aurora/guild/ExpandedGuildMembers.vue";
 import CommentsDesc from "./aurora/news/coments/CommentsDesc.vue";
 
 export {
@@ -43,5 +44,6 @@ export {
     FirstStepsCards,
     CommentsSection,
     CoverNews,
-    CommentsDesc
+    ExpandedGuildMembers,
+    CommentsDesc,
 }
