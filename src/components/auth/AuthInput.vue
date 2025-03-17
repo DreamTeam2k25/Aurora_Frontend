@@ -25,14 +25,12 @@ const authMethod = ref([
     {method: 'Login', alternative_text: 'Não possui cadastro?', alternative_link: 'Cadastre-se', selected: true, function: () => {
         authMethod.value[0].selected = false
         authMethod.value[1].selected = true
-        // authStore.Login(loginBody)
         emits('change_auth')
 
     }},
     {method: 'Cadastro', alternative_text: 'Já possui cadastro? Faça ', alternative_link: ' login', selected: false, function: () => {
         authMethod.value[1].selected = false
         authMethod.value[0].selected = true
-        // authStore.CreateUser()
         emits('change_auth')
     }}
 ])
@@ -40,7 +38,7 @@ const authMethod = ref([
 const check_auth = computed(()=>{
 
     if (authMethod.value[0].selected) {
-        return authData.value.slice(3)
+        return [authData.value[1], authData.value[4]]
     }
     else {
         return authData.value.slice(0, 2).concat(authData.value[authData.value.length - 1])
@@ -52,8 +50,11 @@ const createUser = (nome, email, senha) => {
     user.name = nome
     user.password = senha
     user.username = nome
-    console.log(user)
     authStore.CreateUser(user)
+}
+
+const login = (email, senha) => {
+    authStore.Login({email: email, password: senha})
 }
 
 </script>
@@ -73,7 +74,7 @@ const createUser = (nome, email, senha) => {
     </div>
 
     <div class="flex flex-col items-center gap-4">
-        <button @click="authMethod[0].selected ? authStore.Login() : createUser(authData[0].data, authData[1].data, authData[4].data)" class="py-3 px-8 min-w-32 w-auto rounded-full font-bold bg-[#82B0D9]">{{ authMethod[0].selected ? 'Entrar' : 'Cadastre-se' }}</button>
+        <button @click="authMethod[0].selected ? login(authData[1].data, authData[4].data) : createUser(authData[0].data, authData[1].data, authData[4].data)" class="py-3 px-8 min-w-32 w-auto rounded-full font-bold bg-[#82B0D9]">{{ authMethod[0].selected ? 'Entrar' : 'Cadastre-se' }}</button>
         <span @click="authMethod[0].selected ? authMethod[0].function() : authMethod[1].function()" class="flex select-none cursor-pointer gap-1 text-[13px]"><p>{{ authMethod[0].selected ? authMethod[0].alternative_text : authMethod[1].alternative_text }} </p> <p class="text-[#0455BF]">{{ authMethod[0].selected ? authMethod[0].alternative_link : authMethod[1].alternative_link }}</p></span>
     </div>
    </div>
