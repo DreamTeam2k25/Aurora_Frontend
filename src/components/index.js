@@ -14,6 +14,7 @@ import SearchNews from "./aurora/news/search/SearchNews.vue";
 import MainSection from "./aurora/home/main/MainSection.vue";
 import InformationComp from "./aurora/home/information/InformationComp.vue";
 import WideNews from "./global/cards/WideNews.vue";
+import FirstStepsCards from "./aurora/first_steps/FirstStepsCards.vue";
 import ChatComment from "./aurora/news/coments/ChatComment.vue";
 import CommentsSection from "./aurora/news/coments/CommentsSection.vue";
 import CoverNews from "./aurora/news/info/CoverNews.vue";
@@ -35,7 +36,8 @@ export {
     MainSection,
     InformationComp,
     WideNews,
+    FirstStepsCards
     ChatComment,
     CommentsSection,
-    CoverNews
+    CoverNews,
 }
