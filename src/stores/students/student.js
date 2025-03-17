@@ -9,10 +9,12 @@ export const useStudentsStore = defineStore('students', () => {
         connection: false,
         message: '',
         error: null,
-        loading: false
+        loading: false,
+        open: false,
     })
 
 
+    const open = computed(()=> state.open)
     const error = computed(() => state.error)
     const students = computed(() => state.students)
     const student = computed(() => state.student)
@@ -95,5 +97,5 @@ export const useStudentsStore = defineStore('students', () => {
     }   
    
 
-    return {error, message, connection, loading, student, students, GetStudent, GetStudents, CreateStudents, UpdateStudents, DeleteStudents}
+    return {state, error, message, connection, loading, student, students, open, GetStudent, GetStudents, CreateStudents, UpdateStudents, DeleteStudents}
 })

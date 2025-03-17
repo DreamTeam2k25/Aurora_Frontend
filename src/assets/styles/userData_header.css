@@ -1,0 +1,63 @@
+.close {
+    animation: close 2s 1;
+}
+
+.close-header {
+    animation: close-header 3s 1;
+}
+
+.open {
+    animation: open-h 1s 1;
+}
+
+.open-header {
+    animation: open-header 1s 1;
+}
+
+@keyframes close {
+    0% {
+        right: 0%;
+    }
+    50% {
+        width: 40%;
+    }
+    100% {
+        right: -200%;
+    }
+}
+
+@keyframes close-header {
+    0% {
+        right: 0%;
+    }
+    50% {
+        width: 40%;
+    }
+    100% {
+        right: -200%;
+    }
+}
+
+@keyframes open-h {
+    0% {
+        right: -200%;
+    }
+    50% {
+        width: 40%;
+    }
+    100% {
+        right: 0%;
+    }
+}
+
+@keyframes open-header {
+    0% {
+        right: -200%;
+    }
+    50% {
+        width: 40%;
+    }
+    100% {
+        right: 0%;
+    }
+}
