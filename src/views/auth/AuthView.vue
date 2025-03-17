@@ -1,6 +1,61 @@
 <script setup>
-import AuthInput from '@/components/auth/AuthInput.vue';
+import { computed, onMounted, reactive, ref, watch } from 'vue'
+import {
+  useAuthStore
+} from '@/stores/index'
+import { AuthMarketingText, AuthInput } from '@/components'
+
+const authStore = useAuthStore()
+const firstEntrance = ref(0)
+
+const isLogin = ref(true)
+const delayedLogin = ref(isLogin.value)
+
+watch(isLogin, (newValue) => {
+  setTimeout(() => {
+    delayedLogin.value = newValue
+  }, 2000)
+})
+
+const user = reactive({
+  matricula: '',
+  password: ''
+})
+
+const login = () => {
+
+}
 </script>
 <template>
-    <AuthInput />
+  <main class="max-h-dvh h-dvh relative flex overflow-hidden">
+    <div :class="`max-lg:visible hidden wave`"></div>
+    <div class="flex absolute min-w-dvw max-lg:hidden">
+      <AuthMarketingText :is-login="isLogin" :class="` z-50 ${firstEntrance == 0 ? 'bottom-[-35rem] left-[5rem]' : !isLogin ? 'bottom-[-33rem] right-[5rem] register' : 'bottom-[-35rem] left-[5rem] login'} `" />
+      <div
+        
+        :class="`${firstEntrance == 0 ? 'wrapper' : !isLogin ? 'wrapper-animation-back' : 'wrapper-animation'} z-30`"
+      >
+       
+        <div :class="`${firstEntrance == 0 ? 'wave' : !isLogin ? 'wave-animation-back' : 'wave-animation'}`"></div>
+      </div>
+    </div>
+    <div class="flex items-center relative w-[100vw] justify-center">
+      <AuthInput
+        :class="`z-50 absolute max-lg:relative duration-300 ${delayedLogin ? ' right-[10%] max-lg:right-0 max-xl:right-[5%]' : ' left-[10%] max-xl:left-[5%] max-lg:left-0 '} ${firstEntrance == 0 ? '' : !isLogin ? 'animations' : 'animations-back'}`"
+        @change_auth="((isLogin = !isLogin), console.log(isLogin), firstEntrance++)"
+      />
+    </div>
+    
+    <!-- <css-doodle use="var(--rule)"></css-doodle> -->
+  </main>
 </template>
+
+<style scoped>
+@import url(@/assets/styles/auth.css);
+css-doodle {
+  --rule: (
+    : doodle {@grid: 1x1; width: 100%; height: 100%; position: absolute; z-index: -1;}
+      background: white; clip-path: ellipse(75% 50% at 25% center) ; background-color: #2b72c9;
+  );
+}
+</style>
