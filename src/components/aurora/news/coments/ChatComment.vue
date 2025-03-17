@@ -1,24 +1,39 @@
 <script setup>
-    import { GlobalButton } from '@/components';
-
+    import { GlobalButton, GlobalText } from '@/components';
+    
     defineProps({
         isChat: {
             type: Boolean,
             default: false
+        },
+        user: {
+            type: String,
+            required: true,
+            default: 'anonimo'
+        },
+        text: {
+            type: String,
+            default: 'no comment yet'
         }
     })
     
 
 </script>
 <template>
-    <div class="border p-5 flex flex-col justify-center items-center">
-        <div class="flex w-[47%] gap-3 leading-5">
-            <img src="@/assets/images/perfil.png"  alt="">
-            <h1 class="font-bold">teste</h1>
+<section class="w-full flex justify-center items-center ">
+    <div class="flex gap-3 w-2/5 p-3">
+        <div class="mt-1">
+            <img src="@/assets/images/perfil.png" alt="">
         </div>
-        <div class="flex flex-col gap-2 w-2/5">
+        <div class="flex flex-col gap-3 w-full" v-if="!isChat">
+            <h1 class="font-bold">{{ user }}</h1>
             <textarea placeholder="Escreva seu comentário..." class="border-[#c3c3c3] border outline-0 p-2 resize-none 2-full h-28 rounded-xl" />
             <GlobalButton content="Postar comentário" width="w-full" radius="rounded-xl"/>
         </div>
+        <div class="w-full flex flex-col gap-1 border-b pb-7" v-else>
+            <h1 class="font-bold">{{ user }}</h1>
+            <GlobalText :text="text" spacing="leading-7" weight="font-normal" size="text-md" width="w-full"/>
+        </div>
     </div>
+</section>
 </template>

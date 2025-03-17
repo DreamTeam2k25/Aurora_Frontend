@@ -1,7 +1,7 @@
 <script setup>
-    import { ChatComment } from '@/components';
+    import { CommentsSection } from '@/components';
 </script>
 <template>
     <h1>testes do manquinho</h1>
-    <ChatComment />
+    <CommentsSection/>
 </template>
