@@ -38,9 +38,8 @@ export {
     InformationComp,
     WideNews,
     ChatComment,
-    userData_header
-    FirstStepsCards
-    ChatComment,
+    userData_header,
+    FirstStepsCards,
     CommentsSection,
     CoverNews,
 }

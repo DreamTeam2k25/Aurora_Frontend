@@ -119,7 +119,7 @@
     width: 3000px;
     height: 3000px;
     transform: translate(-50%, -50%);
-    border-radius: 5px;
+    
     background-image: linear-gradient(to top, #408add 100%, transparent 0%);
     overflow: hidden;
     position: absolute;
@@ -135,7 +135,7 @@
     width: 3000px;
     height: 3000px;
     transform: translate(-50%, -50%);
-    border-radius: 5px;
+    
     background-image: linear-gradient(to top, #408add 100%, transparent 0%);
     overflow: hidden;
     position: absolute;
@@ -150,7 +150,7 @@
     width: 3000px;
     height: 3000px;
     transform: translate(-50%, -50%);
-    border-radius: 5px;
+    
     background-image: linear-gradient(to top, #408add 100%, transparent 0%);
     overflow: hidden;
     position: absolute;
