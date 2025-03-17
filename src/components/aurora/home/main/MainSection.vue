@@ -1,7 +1,7 @@
 <template>
-    <div class="w-[95%] mx-auto  py-16 px-4 font-sans">
-        <div class="w-full mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-12 mb-24">
+    <div class="w-full mx-auto  py-16 px-4 font-sans">
+        <div class="w-full p-10 mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center  gap-12 mb-24">
                 <MainText />
                 <MainImages />
             </div>
