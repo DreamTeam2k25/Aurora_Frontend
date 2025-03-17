@@ -3,7 +3,7 @@ import api from "@/plugins/api";
 class guildMembersService {
     async GetGuildMembers(){
         try{
-            const response = await api.get('guild-members/')
+            const response = await api.get('guild_members/')
 
             return response.data
         }
@@ -13,7 +13,7 @@ class guildMembersService {
     }
     async GetGuildMember(guildMember){
         try{
-            const response = await api.get(`guild-members/${guildMember.id}`)
+            const response = await api.get(`guild_members/${guildMember.id}`)
 
             return response.data
         }

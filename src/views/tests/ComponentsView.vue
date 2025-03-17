@@ -1,6 +1,6 @@
 <script setup>
 
-import { PostContainerCard, PostForm, Footer, AuthMarketingText, PostCard, userData_header } from '@/components';
+import { PostContainerCard, PostForm, Footer, AuthMarketingText, PostCard, userData_header, ExpandedGuildMembers } from '@/components';
 import MainSection from '@/components/aurora/home/main/MainSection.vue';
 </script>
 
@@ -16,6 +16,6 @@ import MainSection from '@/components/aurora/home/main/MainSection.vue';
 <ContainerShowCards />
 <Footer /> -->
 <!-- <userData_header /> -->
-
+<ExpandedGuildMembers />
 </template>
 
