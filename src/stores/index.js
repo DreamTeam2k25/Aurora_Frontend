@@ -7,6 +7,7 @@ import { useGuildMembersStore } from "./students/guildMembers";
 import { useCommentsStore } from "./portal/comments";
 import { useRepliesStore } from "./portal/replies";
 import { useRepliesOfRepliesStore } from "./portal/replyOfReply";
+import { useOmbdusmanStore } from "./ombdusman/ombdusman";
 
 export {
     useAuthStore,
@@ -17,5 +18,6 @@ export {
     useGuildMembersStore,
     useCommentsStore,
     useRepliesStore,
-    useRepliesOfRepliesStore
+    useRepliesOfRepliesStore,
+    useOmbdusmanStore
 }
