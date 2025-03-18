@@ -7,6 +7,7 @@ import GuildMembersService from './students/guildMember';
 import CommentsService from './portal/comments';
 import RepliesService from './portal/replies';
 import ReplyOfReplyService from './portal/replyOfReply';
+import OmbdusmanService from './ombdusman/ombdusman'
 
 export {
     AuthService,
@@ -17,5 +18,6 @@ export {
     GuildMembersService,
     CommentsService,
     RepliesService,
-    ReplyOfReplyService
+    ReplyOfReplyService,
+    OmbdusmanService
 }
