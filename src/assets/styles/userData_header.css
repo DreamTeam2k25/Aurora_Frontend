@@ -1,9 +1,10 @@
 .close {
-    animation: close 2s 1;
+    animation: close 1s 1;
 }
 
 .close-header {
     animation: close-header 3s 1;
+    /* animation-delay: 2s; */
 }
 
 .open {
@@ -12,17 +13,15 @@
 
 .open-header {
     animation: open-header 1s 1;
+    /* animation-delay: 2s; */
 }
 
 @keyframes close {
     0% {
-        right: 0%;
-    }
-    50% {
-        width: 40%;
+        opacity: 1;
     }
     100% {
-        right: -200%;
+        opacity: 0;
     }
 }
 
@@ -40,13 +39,10 @@
 
 @keyframes open-h {
     0% {
-        right: -200%;
-    }
-    50% {
-        width: 40%;
+        opacity: 0;
     }
     100% {
-        right: 0%;
+        opacity: 1;
     }
 }
 

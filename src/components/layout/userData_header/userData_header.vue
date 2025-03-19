@@ -11,7 +11,7 @@ watch(() => studentsStore.open, (newValue) => {
         animateClose.value = true
         setTimeout(() => {
             animateClose.value = false
-        }, 2000) 
+        }, 500) 
     }
 })
 

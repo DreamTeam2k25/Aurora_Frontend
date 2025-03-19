@@ -6,6 +6,7 @@ class AuthService {
             const response = await api.post('token/', user)
             return response.data
         } catch (error) {
+            console.log(error)
             return error;
         }
     }
@@ -22,6 +23,8 @@ class AuthService {
     async CreateUser(user) {
         try {
             const response = await api.post('users/', user)
+            console.log(response.data)
+            console.log(user)
             return response.data
         } catch (error) {
             console.log(error)
