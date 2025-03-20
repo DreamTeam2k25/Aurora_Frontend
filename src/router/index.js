@@ -43,6 +43,11 @@ const router = createRouter({
       path: '/luan',
       name: 'luan',
       component: () => import('@/views/tests/LuanView.vue')
+    },
+    {
+      path: '/auth-student',
+      name: 'auth-student',
+      component: ()=> import('@/views/auth/CreateStudentView.vue')
     }
   ],
 })

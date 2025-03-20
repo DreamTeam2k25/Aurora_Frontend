@@ -22,6 +22,8 @@ import CoverNews from "./aurora/news/info/CoverNews.vue";
 import ExpandedGuildMembers from "./aurora/guild/ExpandedGuildMembers.vue";
 import CommentsDesc from "./aurora/news/coments/CommentsDesc.vue";
 import ResolveCard from "./global/cards/ResolveCard.vue";
+import TopicsCards from "./global/cards/TopicsCards.vue";
+import TopicsContainer from "./aurora/first_steps/TopicsContainer.vue";
 
 export {
     GlobalButton,
@@ -48,4 +50,6 @@ export {
     ExpandedGuildMembers,
     CommentsDesc,
     ResolveCard,
+    TopicsCards,
+    TopicsContainer,
 }

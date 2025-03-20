@@ -72,6 +72,7 @@ export const useAuthStore = defineStore('auth', ()=>{
 
     async function CreateUser(user) {
         state.value.loading = true
+        console.log(user)
 
         try {
 
