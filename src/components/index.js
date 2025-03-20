@@ -21,6 +21,8 @@ import CommentsSection from "./aurora/news/coments/CommentsSection.vue";
 import CoverNews from "./aurora/news/info/CoverNews.vue";
 import ExpandedGuildMembers from "./aurora/guild/ExpandedGuildMembers.vue";
 import CommentsDesc from "./aurora/news/coments/CommentsDesc.vue";
+import TopicsCards from "./global/cards/TopicsCards.vue";
+import TopicsContainer from "./aurora/first_steps/TopicsContainer.vue";
 
 export {
     GlobalButton,
@@ -46,4 +48,6 @@ export {
     CoverNews,
     ExpandedGuildMembers,
     CommentsDesc,
+    TopicsCards,
+    TopicsContainer,
 }
