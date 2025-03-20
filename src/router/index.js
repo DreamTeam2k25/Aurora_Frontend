@@ -10,6 +10,12 @@ const router = createRouter({
       component: ()=> import('@/views/home/HomeView.vue'),
     },
     {
+      path: '/ouvidoria',
+      name: "Ouvidoria",
+      meta: {header: true},
+      component: () => import('@/views/ombdusman/OmbdusmanView.vue')
+    },
+    {
       path: '/tests',
       name: 'test',
       meta: {header: true},
