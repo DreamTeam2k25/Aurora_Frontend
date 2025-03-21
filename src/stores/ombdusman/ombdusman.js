@@ -1,15 +1,15 @@
 import { defineStore } from "pinia";
-import { computed } from "vue";
+import { computed, reactive } from "vue";
 import { OmbdusmanService } from "@/services";
 
 export const useOmbdusmanStore = defineStore('ombdusman', () => {
-    const state = {
+    const state = reactive({
         ombdusman: [],
         connection: false,
         message: '',
         error: null,
         loading: false
-    }
+    })
 
     const ombdusman = computed(() => {return state.ombdusman})
     const connection = computed(() => {return state.connection})
@@ -19,9 +19,11 @@ export const useOmbdusmanStore = defineStore('ombdusman', () => {
 
     const CreateOmbudsman = async (description) => {
         state.loading = true
+        console.log(description)
         try{
             const Ombdusman = await OmbdusmanService.Create(description)
             state.ombdusman.push(Ombdusman)
+            console.log(Ombdusman)
         }
         catch(err){
             state.error = err
@@ -37,6 +39,9 @@ export const useOmbdusmanStore = defineStore('ombdusman', () => {
         try{
             const Ombdusman = await OmbdusmanService.Get()
             state.ombdusman = Ombdusman
+            console.log(state.ombdusman)
+            console.log(ombdusman.value)
+
         }
         catch(err){
             state.error = err
