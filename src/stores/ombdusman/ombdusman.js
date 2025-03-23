@@ -7,8 +7,10 @@ export const useOmbdusmanStore = defineStore('ombdusman', () => {
         ombdusman: [],
         connection: false,
         message: '',
+        count: null,
         error: null,
-        loading: false
+        loading: false,
+        count: null,
     })
 
     const ombdusman = computed(() => {return state.ombdusman})
@@ -16,6 +18,7 @@ export const useOmbdusmanStore = defineStore('ombdusman', () => {
     const message = computed(() => {return state.message})
     const error = computed(() => {return state.error})
     const loading = computed(() => {return state.loading})
+    const count = computed(() => {return state.count})
 
     const CreateOmbudsman = async (description) => {
         state.loading = true
@@ -24,6 +27,7 @@ export const useOmbdusmanStore = defineStore('ombdusman', () => {
             const Ombdusman = await OmbdusmanService.Create(description)
             state.ombdusman.push(Ombdusman)
             console.log(Ombdusman)
+            
         }
         catch(err){
             state.error = err
@@ -34,13 +38,12 @@ export const useOmbdusmanStore = defineStore('ombdusman', () => {
         }
     }
 
-    const GetOmbdusman = async () =>{
+    const GetOmbdusman = async (page) =>{
         state.loading = true
         try{
-            const Ombdusman = await OmbdusmanService.Get()
-            state.ombdusman = Ombdusman
-            console.log(state.ombdusman)
-            console.log(ombdusman.value)
+            const Ombdusman = await OmbdusmanService.Get(page)
+            state.ombdusman = Ombdusman.results
+            state.count = Ombdusman.count
 
         }
         catch(err){
@@ -52,5 +55,5 @@ export const useOmbdusmanStore = defineStore('ombdusman', () => {
         }
     }
 
-    return {ombdusman, connection, loading, error, message, GetOmbdusman, CreateOmbudsman}
+    return {state, ombdusman, connection, loading, error, message, count, GetOmbdusman, CreateOmbudsman}
 })

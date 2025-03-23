@@ -1,21 +1,23 @@
 <script setup>
-import { GlobalText, GlobalButton, ResolveCard } from '@/components';
-import { onMounted, reactive } from 'vue';
+import { GlobalText, GlobalButton, ResolveCard, SetPagination } from '@/components';
+import { onMounted, reactive, ref } from 'vue';
 import { useAuthStore, useOmbdusmanStore } from '@/stores';
+import { amountOfPages } from '@/utils';
 
 const AuthStore = useAuthStore()
 const OmbdusmanStore = useOmbdusmanStore()
+const pages = ref(null)
 
 const description = reactive({
-    user: "luansilva250807@gmail.com",
-    description: ''
+    user: AuthStore.user.email,
+    description: '',
 })
-
-
 
 onMounted(async () => {
     await OmbdusmanStore.GetOmbdusman()
-})
+    pages.value = amountOfPages(OmbdusmanStore.state.count, 9)
+})  
+
 </script>
 <template>
     <section class="flex flex-col p-10 gap-20">
@@ -38,7 +40,8 @@ onMounted(async () => {
             </div>
             <div class="flex gap-5 flex-wrap justify-center w-full ">
                 <ResolveCard v-for="ombudsman in OmbdusmanStore.ombdusman" :key="ombudsman.id" :is_resolve="ombudsman.is_resolved" :desc="ombudsman.description" />
-            </div>   
+            </div>
+            <SetPagination :store_method="OmbdusmanStore.GetOmbdusman" :store_variable="OmbdusmanStore.state.ombdusman" :pages="pages" @setPage="setPage" @setPageByChoose="setPageByChoose" />
         </div>
     </section>
 </template>

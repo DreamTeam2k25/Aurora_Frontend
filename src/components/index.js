@@ -24,6 +24,7 @@ import CommentsDesc from "./aurora/news/coments/CommentsDesc.vue";
 import ResolveCard from "./global/cards/ResolveCard.vue";
 import TopicsCards from "./global/cards/TopicsCards.vue";
 import TopicsContainer from "./aurora/first_steps/TopicsContainer.vue";
+import SetPagination from "./global/config/SetPagination.vue";
 
 export {
     GlobalButton,
@@ -52,4 +53,5 @@ export {
     ResolveCard,
     TopicsCards,
     TopicsContainer,
+    SetPagination,
 }
