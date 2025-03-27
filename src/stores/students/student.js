@@ -69,6 +69,21 @@ export const useStudentsStore = defineStore('students', () => {
         }
     }
 
+    async function GetStudentByUserId(id) {
+        state.value.loading = true
+        try {
+            const response = await StudentsService.GetStudentByUserId(id)
+            state.value.student = response[0]
+            return response
+        } catch (error) {
+            state.value.error = error
+            return error
+        } finally {
+            state.value.loading = false
+            state.value.connection = true
+        }
+    }
+
     async function UpdateStudents(student) {
         state.value.loading = true
         try{
@@ -102,5 +117,5 @@ export const useStudentsStore = defineStore('students', () => {
     }   
    
 
-    return {state, error, message, connection, loading, student, students, open, GetStudent, GetStudents, CreateStudents, UpdateStudents, DeleteStudents}
+    return {state, error, message, connection, loading, student, students, open, GetStudent, GetStudents, GetStudentByUserId, CreateStudents, UpdateStudents, DeleteStudents}
 })

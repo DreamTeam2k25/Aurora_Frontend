@@ -7,11 +7,8 @@ const authStore = useAuthStore()
 const studentsStore = useStudentsStore()
 
 onMounted(async ()=>{
-    await studentsStore.GetStudents()
-    const userId = authStore.user.id
-    const student = studentsStore.students.find((s) => s.user.id == userId)
-    console.log(studentsStore.students)
-    studentsStore.GetStudent(student)
+    await studentsStore.GetStudentByUserId(authStore.user.id)
+    console.log(studentsStore.student)
 })
 </script>
 

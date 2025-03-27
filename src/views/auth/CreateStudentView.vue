@@ -2,8 +2,7 @@
 import { onMounted, ref, watch } from 'vue'
 import { AuthMarketingText, AuthInput, MessageConfirmation } from '@/components'
 import { useStudentsStore, useAuthStore } from '@/stores'
-import { findData } from '@/utils'
-import router from '@/router'
+import { findData, appearMessage } from '@/utils'
 
 const studentStore = useStudentsStore()
 const authStore = useAuthStore()
@@ -25,28 +24,22 @@ watch(isLogin, (newValue) => {
 const message = ref(false)
 const resultRequisition = ref(false)
 
-const appearMessage = (resultReq, goTo) => {
-  resultRequisition.value = resultReq
-  message.value = true
-  setTimeout(()=>{
-    message.value = false
-    router.push(goTo)
-  },3000)
-  
-}
 
-const doAuth = (data) => {
+const doAuth = async (data) => {
     const user_id = authStore.user.id
-
-    studentStore.CreateStudents({
+  try {
+   const response = await studentStore.CreateStudents({
       matricula: findData(data, 'Matrícula').data,
       turma: findData(data, 'Turma').data,
       user: user_id,
-    }).then((response)=>{
-      response.status == 400 ? appearMessage(false, '') : appearMessage(true, '/')
     })
-
-
+    appearMessage(true, '/', resultRequisition, message)
+    return response
+    } catch(error) {
+      appearMessage(false, '', resultRequisition, message)
+      throw error;
+    }
+  
 }
 
 </script>

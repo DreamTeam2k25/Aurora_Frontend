@@ -7,7 +7,7 @@ class AuthService {
             return response.data
         } catch (error) {
             console.log(error)
-            return error.request;
+            throw error;
         }
     }
 
@@ -25,8 +25,7 @@ class AuthService {
             const response = await api.post('users/', user)
             return response.data
         } catch (error) {
-            console.log(error)
-            return error.request;
+            throw error;
         }
     }
 

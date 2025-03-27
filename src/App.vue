@@ -11,11 +11,6 @@ const studentsStore = useStudentsStore()
 const authStore = useAuthStore()
 const route = useRoute()
 
-onMounted(()=> {
-  console.log(studentsStore.student)
-  console.log(authStore.user)
-})
-
 router.beforeEach((to, from, next)=> {
   if (authStore.access != '' && to.path == '/auth') {
     next('/notFound')
