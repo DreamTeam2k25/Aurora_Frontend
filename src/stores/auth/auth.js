@@ -19,6 +19,7 @@ export const useAuthStore = defineStore('auth', ()=>{
         message: '',
         connection: false,
         loading: false,
+        isLogged: false,
         
     })
 
@@ -32,6 +33,7 @@ export const useAuthStore = defineStore('auth', ()=>{
     const loading = computed(()=> state.value.loading)
     const message  = computed(()=> state.value.message)
     const users = computed(()=> state.value.users)
+    const isLogged = computed(()=> state.value.isLogged)
     
     async function Login(user){
         state.value.loading = true
@@ -43,6 +45,7 @@ export const useAuthStore = defineStore('auth', ()=>{
         console.log(state.value.user)
         state.value.access = token.access
         state.value.refresh = token.refresh
+        state.value.isLogged = true
         return token
         } catch (error) {
             state.value.error = error
@@ -91,7 +94,7 @@ export const useAuthStore = defineStore('auth', ()=>{
         await AuthService.CreateUser(user)
     
         const response = await Login({email: user.email, password: user.password})
-
+        state.value.isLogged = true
         return response
         } catch (error) {
             state.value.error = error;
@@ -149,6 +152,7 @@ export const useAuthStore = defineStore('auth', ()=>{
         localStorage.clear()
         state.value.loading = false
         state.value.connection = true
+        state.value.isLogged = false
     }
 
     async function AutoLogin() {
@@ -161,5 +165,5 @@ export const useAuthStore = defineStore('auth', ()=>{
     }
    
 
-    return { error, user, state, access, refresh, connection, message, users, loading, methodByLink, Login, Logout, GetUser, CreateUser, UpdateUser, DeleteUser, GetUsers, AutoLogin }
+    return { error, user, state, access, refresh, connection, message, users, loading, methodByLink, isLogged, Login, Logout, GetUser, CreateUser, UpdateUser, DeleteUser, GetUsers, AutoLogin }
 })

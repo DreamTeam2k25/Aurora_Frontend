@@ -12,10 +12,14 @@ const authStore = useAuthStore()
 const route = useRoute()
 
 router.beforeEach((to, from, next)=> {
-  if (authStore.access != '' && to.path == '/auth') {
+  if (authStore.isLogged && to.path == '/auth') 
+    next('/notFound')
+  
+  if (studentsStore.studentExists && to.path == '/auth-student') {
     next('/notFound')
   }
-
+    
+  
   next()
 })
 

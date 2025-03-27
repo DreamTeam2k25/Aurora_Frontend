@@ -13,6 +13,7 @@ export const useStudentsStore = defineStore('students', () => {
         error: null,
         loading: false,
         open: false,
+        studentExists: false,
     })
 
 
@@ -23,12 +24,14 @@ export const useStudentsStore = defineStore('students', () => {
     const connection = computed(() => state.value.connection)
     const message = computed(() => state.value.message)
     const loading = computed(() => state.value.loading)
+    const studentExists = computed(()=> state.value.studentExists)
 
     async function CreateStudents(student){
         state.value.loading = true
         try{
             const response = await StudentsService.CreateStudents(student)
             state.value.students.push(response)
+            state.value.studentExists = true
             return response
         }
         catch(error){
@@ -59,6 +62,7 @@ export const useStudentsStore = defineStore('students', () => {
         state.value.loading = true
         try{
             state.value.student = await StudentsService.GetStudent(student)
+            
         }
         catch(error){
             state.value.error = error
@@ -74,6 +78,7 @@ export const useStudentsStore = defineStore('students', () => {
         try {
             const response = await StudentsService.GetStudentByUserId(id)
             state.value.student = response[0]
+            state.value.studentExists = true
             return response
         } catch (error) {
             state.value.error = error
@@ -117,5 +122,5 @@ export const useStudentsStore = defineStore('students', () => {
     }   
    
 
-    return {state, error, message, connection, loading, student, students, open, GetStudent, GetStudents, GetStudentByUserId, CreateStudents, UpdateStudents, DeleteStudents}
+    return {state, error, message, connection, loading, student, students, open, studentExists, GetStudent, GetStudents, GetStudentByUserId, CreateStudents, UpdateStudents, DeleteStudents}
 })
