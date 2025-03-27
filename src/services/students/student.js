@@ -27,8 +27,8 @@ class StudentsService {
             return response.data
         }
         catch(error){
-            console.log(error)
-            return error
+            console.log(error.request)
+            return error.request
         }
     }
     async UpdateStudents(student){

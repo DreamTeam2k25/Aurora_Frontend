@@ -1,9 +1,11 @@
 import { defineStore } from "pinia";
 import { computed, reactive } from "vue";
 import { StudentsService } from "@/services";
+import { useStorage } from "@vueuse/core";
+useStorage
 
 export const useStudentsStore = defineStore('students', () => {
-    const state = reactive({
+    const state = useStorage('studentStorage', {
         students: [],
         student: {},
         connection: false,
@@ -14,85 +16,88 @@ export const useStudentsStore = defineStore('students', () => {
     })
 
 
-    const open = computed(()=> state.open)
-    const error = computed(() => state.error)
-    const students = computed(() => state.students)
-    const student = computed(() => state.student)
-    const connection = computed(() => state.connection)
-    const message = computed(() => state.message)
-    const loading = computed(() => state.loading)
+    const open = computed(()=> state.value.open)
+    const error = computed(() => state.value.error)
+    const students = computed(() => state.value.students)
+    const student = computed(() => state.value.student)
+    const connection = computed(() => state.value.connection)
+    const message = computed(() => state.value.message)
+    const loading = computed(() => state.value.loading)
 
     async function CreateStudents(student){
-        state.loading = true
+        state.value.loading = true
         try{
-            state.students = await StudentsService.CreateStudents(student)
+            const response = await StudentsService.CreateStudents(student)
+            state.value.students.push(response)
+            return response
         }
         catch(error){
-            state.error = error
+            state.value.error = error
+            throw error
         }
         finally{
-            state.loading = false
-            state.connection = true
+            state.value.loading = false
+            state.value.connection = true
         }
     }   
 
     async function GetStudents() {
-        state.loading = true
+        state.value.loading = true
         try{
-            state.students = await StudentsService.GetStudents()
+            state.value.students = await StudentsService.GetStudents()
         }
         catch(error){
-            state.error = error
+            state.value.error = error
         }
         finally{
-            state.loading = false
-            state.connection = true
+            state.value.loading = false
+            state.value.connection = true
         }
     }
 
     async function GetStudent(student){
-        state.loading = true
+        state.value.loading = true
         try{
-            state.student = await StudentsService.GetStudent(student)
+            state.value.student = await StudentsService.GetStudent(student)
         }
         catch(error){
-            state.error = error
+            state.value.error = error
         }
         finally{
-            state.loading = false
-            state.connection = true
+            state.value.loading = false
+            state.value.connection = true
         }
     }
 
     async function UpdateStudents(student) {
-        state.loading = true
+        state.value.loading = true
         try{
             const studentUpdated = await StudentsService.UpdateStudents(student)
-            const findStudentIndex = state.students.findIndex(p => p.id === student.id)
-            state.students[findStudentIndex] = studentUpdated
+            const findStudentIndex = state.value.students.findIndex(p => p.id === student.id)
+            state.value.students[findStudentIndex] = studentUpdated
         }
         catch(error){
-            state.error = error
+            state.value.error = error
         }
         finally{
-            state.loading = false
-            state.connection = true
+            state.value.loading = false
+            state.value.connection = true
         }
     }
 
     async function DeleteStudents(student){
-        state.loading = true
+        state.value.loading = true
         try{
-            const findStudentIndex = state.students.findIndex(p => p.id === student.id)
-            state.students.splice(findStudentIndex, 1)
+            const findStudentIndex = state.value.students.findIndex(p => p.id === student.id)
+            state.value.students.splice(findStudentIndex, 1)
             await StudentsService.DeleteStudents(student)
         }
         catch(error){
-            state.error = error
+            state.value.error = error
         }
         finally{
-            state.loading = false
-            state.connection = true
+            state.value.loading = false
+            state.value.connection = true
         }
     }   
    

@@ -25,6 +25,7 @@ import ResolveCard from "./global/cards/ResolveCard.vue";
 import TopicsCards from "./global/cards/TopicsCards.vue";
 import TopicsContainer from "./aurora/first_steps/TopicsContainer.vue";
 import SetPagination from "./global/config/SetPagination.vue";
+import MessageConfirmation from "./auth/MessageConfirmation.vue";
 
 export {
     GlobalButton,
@@ -54,4 +55,5 @@ export {
     TopicsCards,
     TopicsContainer,
     SetPagination,
+    MessageConfirmation
 }
