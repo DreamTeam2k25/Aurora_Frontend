@@ -26,6 +26,8 @@ import TopicsCards from "./global/cards/TopicsCards.vue";
 import TopicsContainer from "./aurora/first_steps/TopicsContainer.vue";
 import SetPagination from "./global/config/SetPagination.vue";
 import MessageConfirmation from "./auth/MessageConfirmation.vue";
+import SimpleNewsCard from "./global/cards/SimpleNewsCard.vue";
+import AsideNewsContainer from "./aurora/news/info/AsideNewsContainer.vue";
 
 export {
     GlobalButton,
@@ -56,4 +58,6 @@ export {
     TopicsContainer,
     SetPagination,
     MessageConfirmation
+    SimpleNewsCard,
+    AsideNewsContainer,
 }

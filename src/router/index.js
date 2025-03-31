@@ -28,6 +28,12 @@ const router = createRouter({
       component: ()=> import('@/views/tests/FirstSteps.vue'),
     },
     {
+      path: '/news',
+      name: 'noticias',
+      meta: {header: true},
+      component: ()=> import('@/views/news/NewsView.vue'),
+    },
+    {
       path: "/components",
       name: "components",
       meta: {header: true},
