@@ -13,7 +13,6 @@ onMounted(async()=> {
   await postStore.GetPostImage(postStore.posts[0])
   await repliesOfRepliesStore.GetRepliesOfReplies()
   await commentsStore.GetComments()
-  console.log(postStore.post_image)
 })
 const authStore = useAuthStore()
 const imageStore = useImageStore()
@@ -54,7 +53,6 @@ const fillInfo = (info) => {
 }
 
 const createReplieOfReplie = async (replier) => {
-  console.log(replier)
   await repliesOfRepliesStore.CreateRepliesOfReplies(replier)
 }
 

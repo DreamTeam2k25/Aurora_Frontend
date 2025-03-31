@@ -1,12 +1,17 @@
 import { defineStore } from "pinia";
 import { useStorage } from "@vueuse/core";
 import { AuthService } from "@/services";
-import { computed } from "vue";
+import { computed, ref } from "vue";
 
 
 export const useAuthStore = defineStore('auth', ()=>{
     const state = useStorage('storage', {
-        user: {},
+        user: {
+            id: null,
+            name: '',
+            email: '',
+            password: '',
+        },
         users: [],
         access: '',
         refresh: '',
@@ -14,7 +19,11 @@ export const useAuthStore = defineStore('auth', ()=>{
         message: '',
         connection: false,
         loading: false,
+        isLogged: false,
+        
     })
+
+    const methodByLink = ref(true)
   
     const error = computed(() => state.value.error)
     const access = computed(() => state.value.access)
@@ -24,21 +33,27 @@ export const useAuthStore = defineStore('auth', ()=>{
     const loading = computed(()=> state.value.loading)
     const message  = computed(()=> state.value.message)
     const users = computed(()=> state.value.users)
+    const isLogged = computed(()=> state.value.isLogged)
     
     async function Login(user){
         state.value.loading = true
 
         try {
         const token = await AuthService.GetToken(user)
-        state.value.user = user
+        state.value.user = {password: user.password, id: token.user_id, name: token.name, email: user.email}
+
+        console.log(state.value.user)
         state.value.access = token.access
         state.value.refresh = token.refresh
+        state.value.isLogged = true
+        return token
         } catch (error) {
             state.value.error = error
             state.value.message = "Credenciais Inválidas!"
+            throw error
         } finally {
         state.value.loading = false
-        state.value.connection = true
+        state.value.connection = true   
         }
     }
 
@@ -76,11 +91,15 @@ export const useAuthStore = defineStore('auth', ()=>{
 
         try {
 
-        const userCreated = await AuthService.CreateUser(user)
-        state.value.user = userCreated
+        await AuthService.CreateUser(user)
+    
+        const response = await Login({email: user.email, password: user.password})
+        state.value.isLogged = true
+        return response
         } catch (error) {
             state.value.error = error;
             state.value.message = "Erro ao criar um usuário!"
+            throw error
         } finally {
             state.value.loading = false
             state.value.connection = true
@@ -107,6 +126,7 @@ export const useAuthStore = defineStore('auth', ()=>{
         }
     }
 
+
     async function UpdateUser(user) {
         state.value.loading = true
         try {
@@ -132,6 +152,7 @@ export const useAuthStore = defineStore('auth', ()=>{
         localStorage.clear()
         state.value.loading = false
         state.value.connection = true
+        state.value.isLogged = false
     }
 
     async function AutoLogin() {
@@ -144,5 +165,5 @@ export const useAuthStore = defineStore('auth', ()=>{
     }
    
 
-    return { error, user, state, access, refresh, connection, message, users, loading, Login, Logout, GetUser, CreateUser, UpdateUser, DeleteUser, GetUsers, AutoLogin }
+    return { error, user, state, access, refresh, connection, message, users, loading, methodByLink, isLogged, Login, Logout, GetUser, CreateUser, UpdateUser, DeleteUser, GetUsers, AutoLogin }
 })

@@ -1,8 +1,8 @@
 <script setup>
-import { ref, watch } from 'vue'
-import { AuthMarketingText, AuthInput } from '@/components'
+import { onMounted, ref, watch } from 'vue'
+import { AuthMarketingText, AuthInput, MessageConfirmation } from '@/components'
 import { useStudentsStore, useAuthStore } from '@/stores'
-import { findData } from '@/utils'
+import { findData, appearMessage } from '@/utils'
 
 const studentStore = useStudentsStore()
 const authStore = useAuthStore()
@@ -11,29 +11,40 @@ const firstEntrance = ref(0)
 const isLogin = ref(true)
 const delayedLogin = ref(isLogin.value)
 
+onMounted(()=> {
+  studentStore.GetStudents()
+})
+
 watch(isLogin, (newValue) => {
   setTimeout(() => {
     delayedLogin.value = newValue
   }, 2000)
 })
 
-const doAuth = (data) => {
-    const user_id = authStore.user.id
-    console.log({
-      matricula: findData(data, 'Matrícula').data,
-      turma: findData(data, 'Turma').data,
-      user: user_id,
-    })
-    studentStore.CreateStudents({
-      matricula: findData(data, 'Matrícula').data,
-      turma: findData(data, 'Turma').data,
-      user: user_id,
-    })
+const message = ref(false)
+const resultRequisition = ref(false)
 
+
+const doAuth = async (data) => {
+    const user_id = authStore.user.id
+  try {
+   const response = await studentStore.CreateStudents({
+      matricula: findData(data, 'Matrícula').data,
+      turma: findData(data, 'Turma').data,
+      user: user_id,
+    })
+    appearMessage(true, '/', resultRequisition, message)
+    return response
+    } catch(error) {
+      appearMessage(false, '', resultRequisition, message)
+      throw error;
+    }
+  
 }
 
 </script>
 <template>
+  <MessageConfirmation :content="resultRequisition ? 'Conta Criada com sucesso!' : `Erro ao criar sua conta`" :description="resultRequisition ? 'Agora você pode aproveitar todo o nosso sistema.' : 'Verifique as credenciais e tente novamente.'" :icon="resultRequisition ? 'mdi mdi-check-decagram' : 'mdi mdi-alert-circle'" v-if="message" />
   <main class="max-h-dvh h-dvh relative flex overflow-hidden">
     <div :class="`max-lg:visible hidden wave`"></div>
     <div class="flex absolute min-w-dvw max-lg:hidden">
@@ -45,7 +56,7 @@ const doAuth = (data) => {
     <div class="flex items-center relative w-[100vw] justify-center">
       <AuthInput  @auth="doAuth" auth-method="Cadastro de Estudante" button_text="Cadastrar-se" alternative_link="" alternative_text="" :fields="['matricula', 'turma']"
         :class="`z-50 absolute max-lg:relative duration-300 ${delayedLogin ? ' right-[10%] max-lg:right-0 max-xl:right-[5%]' : ' left-[10%] max-xl:left-[5%] max-lg:left-0 '} ${firstEntrance == 0 ? '' : !isLogin ? 'animations' : 'animations-back'}`"
-        @change_auth="((isLogin = !isLogin), console.log(isLogin), firstEntrance++)"
+        @change_auth="((isLogin = !isLogin), firstEntrance++)"
       />
     </div>
     

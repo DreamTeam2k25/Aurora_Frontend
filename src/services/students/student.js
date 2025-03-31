@@ -21,14 +21,22 @@ class StudentsService {
             return error
         }
     }
+
+    async GetStudentByUserId(id) {
+        try {
+            const response = await api.get(`students/?id=&matricula=&curso=&turma=&user=${id}`)
+            return response.data
+        } catch (error) {
+            return error
+        }
+    }
     async CreateStudents(student){
         try{
             const response = await api.post('students/', student)
             return response.data
         }
         catch(error){
-            console.log(error)
-            return error
+            throw error
         }
     }
     async UpdateStudents(student){

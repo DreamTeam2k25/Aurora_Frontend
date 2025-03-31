@@ -1,23 +1,35 @@
 <script setup>
 import { onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-import { useStudentsStore } from './stores';
+import { useAuthStore, useStudentsStore } from './stores';
 import Header from './components/layout/header/Header.vue';
 import DevNav from './components/global/buttons/DevNav.vue';
 import userData_header from './components/layout/userData_header/userData_header.vue';
+import router from './router';
 
 const studentsStore = useStudentsStore()
+const authStore = useAuthStore()
 const route = useRoute()
 
+router.beforeEach((to, from, next)=> {
+  if (authStore.isLogged && to.path == '/auth') 
+    next('/notFound')
+  
+  if (studentsStore.studentExists && to.path == '/auth-student') {
+    next('/notFound')
+  }
+    
+  
+  next()
+})
 
 </script>
 <template>
   <main >
-    <userData_header class="z-[9999]" />
+    <userData_header v-if="authStore.access != ''" class="z-[9999]" />
   <Header v-if="route.meta.header" /> 
 
   <DevNav />
-  <button class="absolute top-0 left-0 z-[9999]" @click="studentsStore.state.open = !studentsStore.state.open">OPEN</button>
   <RouterView />
 </main>
 </template>

@@ -1,9 +1,25 @@
+
 <script setup>
 import GlobalButton from '@/components/global/buttons/GlobalButton.vue';
 import { links } from '@/utils';
-import { useRoute } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
+import { useAuthStore, useStudentsStore } from '@/stores';
 
-const route = useRoute()    
+const authStore = useAuthStore()
+const studentsStore = useStudentsStore()
+
+const router = useRouter() 
+const route = useRoute()   
+
+const goTo = (where) => {
+    if (where == 'register') {
+        authStore.methodByLink = false
+        router.push('/auth')
+    } else {
+        authStore.methodByLink = true
+        router.push('/auth')
+    }
+}
 </script>
 <template>
     <header class="flex justify-between items-center p-5 ">
@@ -11,9 +27,16 @@ const route = useRoute()
         <div class="flex gap-5">
             <router-link v-for="link, i in links" :key="i" :to="link.link" :class="route.name === link.name ? 'font-bold': 'font-medium'" >{{ link.name }}</router-link>
         </div>
-        <div class="flex justify-center border rounded-3xl w-60 border-[#C3C3C3] items-center mr-10">
-            <p class="w-3/4 text-center font-bold cursor-pointer">Cadastro</p>
-            <GlobalButton content="Login" width="w-3/4"/>
+        <div v-if="authStore.access == ''" class="flex justify-center border rounded-3xl w-60 border-[#C3C3C3] items-center mr-10 duration-200 relative ">
+            <span @click="goTo('register')" class="w-3/4 text-center font-bold rounded-3xl py-2 cursor-pointer hover:brightness-200 ">Cadastro</span>
+            <GlobalButton @evento="goTo('login')" content="Login" width="w-3/4"/>
+        </div>
+        <div @click="studentsStore.state.open = !studentsStore.state.open" class=" relative right-5 cursor-pointer flex gap-2 items-center" v-else>
+            <svg class=" size-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,19.2C9.5,19.2 7.29,17.92 6,16C6.03,14 10,12.9 12,12.9C14,12.9 17.97,14 18,16C16.71,17.92 14.5,19.2 12,19.2M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" /></svg>
+            <p>{{ authStore?.user?.name }}</p>
+
+           
         </div>
     </header>
 </template>
+

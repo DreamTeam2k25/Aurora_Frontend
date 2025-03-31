@@ -119,7 +119,6 @@
             },
           });
           this.successMessage = "Post criado com sucesso!";
-          console.log("Resposta da API:", response.data);
   
           // Atualiza a lista de posts
           await this.fetchPosts();

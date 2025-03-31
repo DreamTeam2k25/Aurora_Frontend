@@ -42,7 +42,6 @@ const router = createRouter({
     {
       path: "/auth",
       name: "auth",
-      meta: {header: false},
       component: ()=> import('@/views/auth/AuthView.vue')
     },
     {
@@ -54,8 +53,14 @@ const router = createRouter({
       path: '/auth-student',
       name: 'auth-student',
       component: ()=> import('@/views/auth/CreateStudentView.vue')
+    },
+    {
+      path: '/notFound',
+      name: 'notFound',
+      component: ()=> import('@/views/NotFoundView.vue')
     }
   ],
 })
+
 
 export default router
