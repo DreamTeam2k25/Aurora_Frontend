@@ -34,7 +34,7 @@ const userInformation = ref([{title: 'Matricula', content: studentsStore?.studen
     </div>
     </div>
 
-    <div v-if="studentsStore.student.id" class="flex flex-col pt-20 gap-24 items-center">
+    <div v-if="studentsStore?.student?.id" class="flex flex-col pt-20 gap-24 items-center">
         <div v-for="(data,index) in userInformation" :key="index" class="flex flex-col items-center">
             <p class="text-[#0455BF]">{{data.title}}</p>
             <p class="text-[#6B6B6B]">{{ data.content }}</p>

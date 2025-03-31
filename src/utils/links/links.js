@@ -1,23 +1,23 @@
 export const links = [
     {
         name: 'Home',
-        link: '/'
+        link: '/portal'
     },
     {
         name: 'Primeiros passos',
-        link: 'firststep/'
+        link: '/portal/firststep/'
     },
     {
         name: 'Noticias',
-        link: 'news/'
+        link: '/portal/news/'
     },
     {
         name: 'Ouvidoria',
-        link: 'ouvidoria/'
+        link: '/portal/ombdusman/'
     },
     {
         name: 'Sobre',
-        link: 'about/'
+        link: '/portal/about/'
     }
 ]
 

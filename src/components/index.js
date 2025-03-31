@@ -57,7 +57,7 @@ export {
     TopicsCards,
     TopicsContainer,
     SetPagination,
-    MessageConfirmation
+    MessageConfirmation,
     SimpleNewsCard,
     AsideNewsContainer,
 }
