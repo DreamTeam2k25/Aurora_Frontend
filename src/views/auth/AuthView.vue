@@ -57,7 +57,7 @@ const doAuth = async (data) => {
       })
       messageContent.content = 'Sucesso ao fazer Login'
       messageContent.description = 'Seja bem vindo e bom proveito do nosso sistema.'
-      appearMessage(true, '/', resultRequisition, message)
+      appearMessage(true, '/portal', resultRequisition, message)
       return response
     } catch (error) {
       
@@ -87,6 +87,7 @@ const doAuth = async (data) => {
        
   }
 }
+
 </script>
 <template>
   <MessageConfirmation

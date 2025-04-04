@@ -27,7 +27,7 @@ class StudentsService {
             const response = await api.get(`students/?id=&matricula=&curso=&turma=&user=${id}`)
             return response.data
         } catch (error) {
-            return error
+            throw error
         }
     }
     async CreateStudents(student){
