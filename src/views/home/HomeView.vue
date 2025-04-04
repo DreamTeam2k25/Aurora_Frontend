@@ -6,10 +6,6 @@ import { useAuthStore, useStudentsStore } from '@/stores';
 const authStore = useAuthStore()
 const studentsStore = useStudentsStore()
 
-onMounted(async ()=>{
-    await studentsStore.GetStudentByUserId(authStore.user.id)
-    console.log(studentsStore.student)
-})
 </script>
 
 <template>

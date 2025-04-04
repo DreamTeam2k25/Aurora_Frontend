@@ -3,6 +3,7 @@ import { onMounted, ref, watch } from 'vue'
 import { AuthMarketingText, AuthInput, MessageConfirmation } from '@/components'
 import { useStudentsStore, useAuthStore } from '@/stores'
 import { findData, appearMessage } from '@/utils'
+import { onBeforeRouteUpdate } from 'vue-router'
 
 const studentStore = useStudentsStore()
 const authStore = useAuthStore()
@@ -33,7 +34,8 @@ const doAuth = async (data) => {
       turma: findData(data, 'Turma').data,
       user: user_id,
     })
-    appearMessage(true, '/', resultRequisition, message)
+    appearMessage(true, '/portal', resultRequisition, message)
+    studentStore.state.studentExists = true
     return response
     } catch(error) {
       appearMessage(false, '', resultRequisition, message)
@@ -41,6 +43,11 @@ const doAuth = async (data) => {
     }
   
 }
+
+onBeforeRouteUpdate(async ()=> {
+  await studentStore.GetStudentByUserId(authStore.user.id);
+  router.push('/home');
+})
 
 </script>
 <template>

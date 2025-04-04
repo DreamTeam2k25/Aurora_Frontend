@@ -28,6 +28,7 @@ import SetPagination from "./global/config/SetPagination.vue";
 import MessageConfirmation from "./auth/MessageConfirmation.vue";
 import SimpleNewsCard from "./global/cards/SimpleNewsCard.vue";
 import AsideNewsContainer from "./aurora/news/info/AsideNewsContainer.vue";
+import Loading from "./global/config/Loading.vue";
 
 export {
     GlobalButton,
@@ -60,4 +61,5 @@ export {
     MessageConfirmation,
     SimpleNewsCard,
     AsideNewsContainer,
+    Loading
 }

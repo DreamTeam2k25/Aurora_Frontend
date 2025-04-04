@@ -7,7 +7,7 @@ useStorage
 export const useStudentsStore = defineStore('students', () => {
     const state = useStorage('studentStorage', {
         students: [],
-        student: {},
+        student: null,
         connection: false,
         message: '',
         error: null,
@@ -31,7 +31,7 @@ export const useStudentsStore = defineStore('students', () => {
         try{
             const response = await StudentsService.CreateStudents(student)
             state.value.students.push(response)
-            state.value.studentExists = true
+           
             return response
         }
         catch(error){
@@ -78,11 +78,12 @@ export const useStudentsStore = defineStore('students', () => {
         try {
             const response = await StudentsService.GetStudentByUserId(id)
             state.value.student = response[0]
-            state.value.studentExists = true
+          
             return response
         } catch (error) {
+            
             state.value.error = error
-            return error
+            throw error
         } finally {
             state.value.loading = false
             state.value.connection = true
