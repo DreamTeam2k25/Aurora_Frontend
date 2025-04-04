@@ -4,7 +4,9 @@ export const appearMessage = (resultReq, goTo, req, appear) => {
     appear.value = true
     setTimeout(() => {
       appear.value = false
-      router.replace({path: goTo})
-      router.go(1)
+      
+      router.push(goTo).then(()=> {
+        router.go()
+      })
     }, 3000)
   }
