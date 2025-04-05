@@ -7,12 +7,12 @@ import router from '@/router'
 const studentsStore = useStudentsStore()
 const authStore = useAuthStore()
 const animateClose = ref(false)
-const studentId = computed(() => studentsStore.student.id)
-
+const studentExists = computed(()=> studentsStore.studentExists)
+const showSucess = computed(()=> props.succesRequisition)
 const userInformation = computed(() => [
-  { title: 'Matricula', content: studentsStore.student?.matricula },
-  { title: 'Curso', content: studentsStore.student?.curso },
-  { title: 'Turma', content: studentsStore.student?.turma },
+  { title: 'Matricula', content: studentsStore.student.matricula },
+  { title: 'Curso', content:  studentsStore.student.curso },
+  { title: 'Turma', content:  studentsStore.student.turma },
 ])
 
 const returnUserInformation = computed(() => userInformation.value)
@@ -24,14 +24,34 @@ const props = defineProps({
   },
 })
 
+
+const load_StudentData  = async (id, data) => {
+  if (studentsStore.studentExists != null) {
+    if (studentsStore.studentExists == true) {
+      return data
+    }
+  } else {
+    try {
+    const response = await studentsStore.GetStudentByUserId(id)
+      studentsStore.state.studentExists = true
+      return response
+  } catch (error) {
+    studentsStore.state.studentExists = false
+    throw error
+  }
+  }
+} 
+
 onMounted(async () => {
-  await studentsStore.GetStudentByUserId(authStore.user.id)
+  await load_StudentData(authStore.user.id, studentsStore.student)
+ 
 })
 
 const logOut = () => {
   studentsStore.state.open = false
   studentsStore.state.studentExists = false
   authStore.Logout()
+  studentsStore.LogOut()
 }
 
 watch(
@@ -46,11 +66,12 @@ watch(
   },
 )
 
+
 watch(
   () => studentsStore.studentExists,
   async (newValue) => {
     while (studentsStore.student == null) {
-      await studentsStore.GetStudentByUserId(authStore.user.id)
+      load_StudentData(authStore.user.id, studentsStore.student)
     }
   },
 )
@@ -63,7 +84,7 @@ watch(
     >
     <span @click="
     studentsStore.state.open = false" class="mdi mdi-close text-2xl cursor-pointer text-[#6B6B6B] absolute top-3 right-3"></span>
-      <div v-if="props.succesRequisition">
+      <div v-if="showSucess">
         <div class="w-full pt-16 gap-5 flex justify-center items-center">
           <span class="mdi mdi-account-circle text-5xl"></span>
           <div class="flex flex-col items-center">
@@ -72,7 +93,7 @@ watch(
           </div>
         </div>
 
-        <div v-if="studentId" class="flex flex-col pt-20 gap-24 items-center">
+        <div v-if="studentExists" class="flex flex-col pt-20 gap-24 items-center">
           <div
             v-for="(data, index) in returnUserInformation"
             :key="index"

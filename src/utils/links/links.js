@@ -44,15 +44,15 @@ export const linksIFC = [{
 
 export const linksContact = [
     {
-        img: 'whatsapp.png',
+        img: 'https://auroramediastorage.s3.us-east-2.amazonaws.com/whatsapp.png',
         link: 'https://api.whatsapp.com/send/?phone=554738037273&text=Ol%C3%A1+%2ACampus+Araquari%2A%21+Preciso+de+informa%C3%A7%C3%B5es+sobre+o+IFC.&type=phone_number&app_absent=0'
     },
     {
-        img: 'facebook.png',
+        img: 'https://auroramediastorage.s3.us-east-2.amazonaws.com/facebook.png',
         link: 'https://www.facebook.com/ifc.oficial.araquari/'
     },
     {
-        img: 'instagram.png',
+        img: 'https://auroramediastorage.s3.us-east-2.amazonaws.com/instagram.png',
         link: 'https://www.instagram.com/ifc.oficial.araquari/'
     }
 ]

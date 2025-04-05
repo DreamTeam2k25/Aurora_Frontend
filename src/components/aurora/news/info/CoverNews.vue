@@ -29,15 +29,15 @@
             <GlobalButton :content="post.type"/>
             <div class="flex gap-7">
                 <div class="flex justify-center items-center gap-3">
-                    <img src="@/assets/images/eye.png" alt="">
+                    <img src="https://auroramediastorage.s3.us-east-2.amazonaws.com/eye.png" alt="">
                     <p class="font-semibold">{{ post.views }}</p>
                 </div>
                 <div class="flex justify-center items-center gap-3">
-                    <img src="@/assets/images/message.png" alt="">
+                    <img src="https://auroramediastorage.s3.us-east-2.amazonaws.com/message.png" alt="">
                     <p class="font-semibold">{{ post.commnents }}</p>
                 </div>
                 <div class="flex justify-center items-center  gap-3">
-                    <img src="@/assets/images/share.png" alt="">
+                    <img src="https://auroramediastorage.s3.us-east-2.amazonaws.com/share.png" alt="">
                     <p class="font-semibold">{{ post.shared }}</p>
                 </div>
             </div>

@@ -23,7 +23,7 @@ const goTo = (where) => {
 </script>
 <template>
     <header class="flex justify-between items-center p-5 ">
-        <img src="../../../assets/images/AURORA.png" alt="" class="ml-10">
+        <img src="https://auroramediastorage.s3.us-east-2.amazonaws.com/AURORA.png" alt="" class="ml-10">
         <div class="flex gap-5">
             <router-link v-for="link, i in links" :key="i" :to="link.link" :class="route.name === link.name ? 'font-bold': 'font-medium'" >{{ link.name }}</router-link>
         </div>

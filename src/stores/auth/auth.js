@@ -149,10 +149,10 @@ export const useAuthStore = defineStore('auth', ()=>{
         state.value.access = ''
         state.value.refresh = ''
         state.value.user = {}
-        localStorage.clear()
         state.value.loading = false
         state.value.connection = true
         state.value.isLogged = false
+        localStorage.clear()
     }
 
     async function AutoLogin() {
