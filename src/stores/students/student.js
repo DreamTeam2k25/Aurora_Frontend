@@ -13,7 +13,7 @@ export const useStudentsStore = defineStore('students', () => {
         error: null,
         loading: false,
         open: false,
-        studentExists: false,
+        studentExists: null,
     })
 
 
@@ -121,7 +121,14 @@ export const useStudentsStore = defineStore('students', () => {
             state.value.connection = true
         }
     }   
+
+    async function LogOut() {
+        state.value.studentExists = null
+        state.value.student = null
+        state.value.open = false
+        localStorage.clear()
+    }
    
 
-    return {state, error, message, connection, loading, student, students, open, studentExists, GetStudent, GetStudents, GetStudentByUserId, CreateStudents, UpdateStudents, DeleteStudents}
+    return {state, error, message, connection, loading, student, students, open, studentExists, GetStudent, GetStudents, GetStudentByUserId, CreateStudents, UpdateStudents, DeleteStudents, LogOut}
 })
