@@ -73,22 +73,35 @@ export const useStudentsStore = defineStore('students', () => {
         }
     }
 
+
     async function GetStudentByUserId(id) {
         state.value.loading = true
-        try {
+        if (studentExists.value != null) {
+          if (studentExists.value == true ) {
+            if (student.value != null) {
+            return student.value
+            } else {
             const response = await StudentsService.GetStudentByUserId(id)
             state.value.student = response[0]
-          
+            }
+          } else {
+            return null
+          }
+        } else {
+          try {
+          const response = await StudentsService.GetStudentByUserId(id)
+          state.value.student = response[0]
+            state.value.studentExists = true
             return response
         } catch (error) {
-            
-            state.value.error = error
-            throw error
-        } finally {
-            state.value.loading = false
-            state.value.connection = true
+          state.value.error = error
+          state.value.studentExists = false
+          throw error
         }
-    }
+        }
+        state.value.loading = false
+        state.value.connection = true
+      } 
 
     async function UpdateStudents(student) {
         state.value.loading = true
@@ -127,6 +140,7 @@ export const useStudentsStore = defineStore('students', () => {
         state.value.student = null
         state.value.open = false
         localStorage.clear()
+        console.log(studentExists.value)
     }
    
 

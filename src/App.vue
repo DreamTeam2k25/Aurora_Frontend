@@ -21,7 +21,6 @@ router.beforeEach((to, from, next)=> {
 })
 
 
-
 </script>
 <template>
   <main >

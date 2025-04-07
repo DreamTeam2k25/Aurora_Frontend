@@ -10,9 +10,9 @@ const animateClose = ref(false)
 const studentExists = computed(()=> studentsStore.studentExists)
 const showSucess = computed(()=> props.succesRequisition)
 const userInformation = computed(() => [
-  { title: 'Matricula', content: studentsStore.student.matricula },
-  { title: 'Curso', content:  studentsStore.student.curso },
-  { title: 'Turma', content:  studentsStore.student.turma },
+  { title: 'Matricula', content: studentsStore?.student?.matricula },
+  { title: 'Curso', content:  studentsStore?.student?.curso },
+  { title: 'Turma', content:  studentsStore?.student?.turma },
 ])
 
 const returnUserInformation = computed(() => userInformation.value)
@@ -24,32 +24,13 @@ const props = defineProps({
   },
 })
 
-
-const load_StudentData  = async (id, data) => {
-  if (studentsStore.studentExists != null) {
-    if (studentsStore.studentExists == true) {
-      return data
-    }
-  } else {
-    try {
-    const response = await studentsStore.GetStudentByUserId(id)
-      studentsStore.state.studentExists = true
-      return response
-  } catch (error) {
-    studentsStore.state.studentExists = false
-    throw error
-  }
-  }
-} 
-
 onMounted(async () => {
-  await load_StudentData(authStore.user.id, studentsStore.student)
+  await studentsStore.GetStudentByUserId(authStore.user.id)
  
 })
 
 const logOut = () => {
   studentsStore.state.open = false
-  studentsStore.state.studentExists = false
   authStore.Logout()
   studentsStore.LogOut()
 }
@@ -62,16 +43,6 @@ watch(
       setTimeout(() => {
         animateClose.value = false
       }, 500)
-    }
-  },
-)
-
-
-watch(
-  () => studentsStore.studentExists,
-  async (newValue) => {
-    while (studentsStore.student == null) {
-      load_StudentData(authStore.user.id, studentsStore.student)
     }
   },
 )
@@ -107,7 +78,7 @@ watch(
           <GlobalButton
             class="mt-5"
             @evento="(router.push('/auth-student'), (studentsStore.state.open = false))"
-            content="Torne-se um estudante"
+            content="Crie uma conta estudante"
             width="w-3/4"
           />
         </div>

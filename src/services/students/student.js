@@ -30,6 +30,7 @@ class StudentsService {
             throw error
         }
     }
+    
     async CreateStudents(student){
         try{
             const response = await api.post('students/', student)
